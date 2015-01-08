@@ -1,0 +1,8 @@
+parameters:
+    xidea_book.author_factory.class: Xidea\Component\Book\Factory\AuthorFactory
+  
+services:
+    xidea_book.author_factory.default:
+        class: %xidea_book.author_factory.class%
+        arguments:
+            - %xidea_book.author.class%

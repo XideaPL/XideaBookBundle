@@ -1,0 +1,4 @@
+Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Publisher:
+    type: entity
+    table: book_publisher
+    repositoryClass: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\PublisherRepository

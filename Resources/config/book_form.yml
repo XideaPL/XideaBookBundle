@@ -1,0 +1,19 @@
+services:
+    xidea_book.book.form.type:
+        class: Xidea\Bundle\BookBundle\Form\Type\BookType
+        arguments:
+            - %xidea_book.book.class%
+        tags:
+            - { name: form.type, alias: "xidea_book" }
+    xidea_book.book_create.form.factory:
+        class: Xidea\Bundle\BookBundle\Form\Factory\FormFactory
+        arguments:
+            - @form.factory
+            - %xidea_book.book_create.form.name%
+            - %xidea_book.book_create.form.type%
+            - %xidea_book.book_create.form.validation_groups%
+    xidea_book.book_create.form.handler:
+        class: Xidea\Bundle\BookBundle\Form\Handler\BookFormHandler
+        arguments:
+            - @xidea_book.book_create.form.factory
+            - @event_dispatcher

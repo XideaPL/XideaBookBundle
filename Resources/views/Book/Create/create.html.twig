@@ -1,0 +1,27 @@
+{% extends 'XideaBookBundle::main.html.twig' %}
+{% block xidea_book_header_title %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ 'book_create.title'|trans }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+{% endblock %}
+{% block xidea_book_main %}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ 'book_create.title'|trans }}
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    {{ include('XideaBookBundle:Book/Create:form.html.twig') }}
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+{% endblock %}

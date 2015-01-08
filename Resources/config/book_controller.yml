@@ -1,0 +1,27 @@
+parameters:
+    xidea_book.controller.list.class: Xidea\Bundle\BookBundle\Controller\Book\ListController
+    xidea_book.controller.view.class: Xidea\Bundle\BookBundle\Controller\Book\ViewController
+    xidea_book.controller.create.class: Xidea\Bundle\BookBundle\Controller\Book\CreateController
+  
+services:
+    xidea_book.controller.list:
+        class: %xidea_book.controller.list.class%
+        arguments:
+            - @xidea_book.book_loader
+            - @templating
+            - @event_dispatcher
+    xidea_book.controller.view:
+        class: %xidea_book.controller.view.class%
+        arguments:
+            - @xidea_book.book_loader
+            - @templating
+            - @event_dispatcher
+    xidea_book.controller.create:
+        class: %xidea_book.controller.create.class%
+        arguments:
+            - @xidea_book.book_director
+            - @xidea_book.book_manager
+            - @xidea_book.book_create.form.handler
+            - @router
+            - @templating
+            - @event_dispatcher

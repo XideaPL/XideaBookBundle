@@ -1,0 +1,3 @@
+xidea_book:
+    resource: "@XideaProductBundle/Resources/config/routing/book.yml"
+    prefix:   /app/books

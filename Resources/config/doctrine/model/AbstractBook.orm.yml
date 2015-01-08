@@ -1,0 +1,37 @@
+Xidea\Component\Book\Model\AbstractBook:
+    type: mappedSuperclass
+    repositoryClass: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        title:
+            type: string
+            length: 255
+        description:
+            type: text
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: true
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: true
+    manyToOne:
+        author:
+            targetEntity: Xidea\Component\Book\Model\AuthorInterface
+            joinColumn:
+                name: author_id
+                referencedColumnName: id
+                nullable: false
+        author:
+            targetEntity: Xidea\Component\Book\Model\PublisherInterface
+            joinColumn:
+                name: publisher_id
+                referencedColumnName: id
+                nullable: false
+#    lifecycleCallbacks:
+#        prePersist: [ prePersist ]
+#        preUpdate: [ preUpdate ]

@@ -1,0 +1,20 @@
+book:
+    title: Tytuł
+    description: Opis
+    created_at: Dodano
+    updated_at: Zmodyfikowano
+    author:
+        name: Autor
+    
+book_create:
+    title: Nowa książka
+    route:
+      name: Nowa książka
+      
+book_list:
+    title: Książki
+      
+book_view:
+    title: %book_title%
+    details:
+        title: Szczegóły produktu

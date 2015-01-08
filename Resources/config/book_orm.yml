@@ -1,0 +1,21 @@
+parameters:
+    xidea_book.book_repository.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookRepository
+    xidea_book.book_loader.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Loader\BookLoader
+    xidea_book.book_manager.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Manager\BookManager
+  
+services:
+    xidea_book.book_repository.default:
+        class: %xidea_book.book_repository.default.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - %xidea_book.book.class%
+    xidea_book.book_loader.default:
+        class: %xidea_book.book_loader.default.class%
+        arguments:
+            - @xidea_book.book_repository.default
+    xidea_book.book_manager.default:
+        class: %xidea_book.book_manager.default.class%
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @event_dispatcher

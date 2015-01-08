@@ -1,0 +1,8 @@
+parameters:
+    xidea_book.publisher_factory.class: Xidea\Component\Book\Factory\PublisherFactory
+  
+services:
+    xidea_book.publisher_factory.default:
+        class: %xidea_book.publisher_factory.class%
+        arguments:
+            - %xidea_book.publisher.class%
