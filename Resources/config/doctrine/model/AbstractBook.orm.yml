@@ -19,14 +19,20 @@ Xidea\Component\Book\Model\AbstractBook:
             column: updated_at
             type: datetime
             nullable: true
+    manyToMany:
+        bookAuthors:
+            targetEntity: Xidea\Component\Book\Model\BookAuthorInterface
+            joinTable:
+                name: book_book_author
+                joinColumns:
+                    book_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    author_id:
+                        referencedColumnName: id
+                        unique: true
     manyToOne:
-        author:
-            targetEntity: Xidea\Component\Book\Model\AuthorInterface
-            joinColumn:
-                name: author_id
-                referencedColumnName: id
-                nullable: false
-        author:
+        publisher:
             targetEntity: Xidea\Component\Book\Model\PublisherInterface
             joinColumn:
                 name: publisher_id

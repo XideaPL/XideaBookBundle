@@ -22,18 +22,18 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{ 'book.name'|trans }}</th>
+                                    <th>{{ 'book.title'|trans }}</th>
                                     <th>{{ 'book.created_at'|trans }}</th>
                                     <th>{{ 'book.updated_at'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for book in books %}
+                                {% for object in objects %}
                                     <tr>
-                                        <td>{{ book.id }}</td>
-                                        <td>{{ book.name }}</td>
-                                        <td>{{ book.createdAt|date() }}</td>
-                                        <td>{{ book.updatedAt|date() }}</td>
+                                        <td>{{ object.id }}</td>
+                                        <td>{{ object.title }}</td>
+                                        <td>{{ object.createdAt|date() }}</td>
+                                        <td>{{ object.updatedAt|date() }}</td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

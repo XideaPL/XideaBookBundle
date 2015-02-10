@@ -13,14 +13,16 @@ use Symfony\Component\HttpFoundation\Request,
     Symfony\Component\EventDispatcher\EventDispatcherInterface,
     Symfony\Component\Form\FormInterface;
 
-use Xidea\Bundle\BookBundle\Form\Factory\FormFactoryInterface,
-    Xidea\Bundle\BookBundle\BookEvents,
-    Xidea\Bundle\BookBundle\Event\FormEvent;
+use Xidea\Bundle\BaseBundle\Form\Handler\FormHandlerInterface,
+    Xidea\Bundle\BaseBundle\Form\Factory\FormFactoryInterface,
+    Xidea\Bundle\BaseBundle\Event\FormEvent;
+
+use Xidea\Bundle\BookBundle\BookEvents;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class PublisherFormHandler implements BookFormHandlerInterface
+class PublisherFormHandler implements FormHandlerInterface
 {
     /*
      * @var FormFactoryInterface

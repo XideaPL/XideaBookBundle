@@ -1,0 +1,66 @@
+{% extends 'XideaBookBundle::main.html.twig' %}
+{% block xidea_book_header_title %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ 'book_view.title'|trans({'%book_title%':object.title}) }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+{% endblock %}
+{% block xidea_book_main %}
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ 'book_view.details.title'|trans }}
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                          <tr>
+                            <th scope="row">
+                              <code>{{ 'book.title'|trans }}</code>
+                            </th>
+                            <td>{{ object.title }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              <code>{{ 'book.description'|trans }}</code>
+                            </th>
+                            <td>{{ object.description }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              <code>{{ 'book.created_at'|trans }}</code>
+                            </th>
+                            <td>{{ object.createdAt|date }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              <code>{{ 'book.updated_at'|trans }}</code>
+                            </th>
+                            <td>{{ object.updatedAt|date }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                              <code><code>{{ 'book.author.name'|trans }}</code></code>
+                            </th>
+                            <td>
+                                <ul>
+                                    {% for author in object.bookAuthors %}
+                                        <li>{{ author.name }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+{% endblock %}

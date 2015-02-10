@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Artur Pszczółka <artur.pszczolka@xidea.pl>
  */
-class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class LoadBookAuthorData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
@@ -41,10 +41,10 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
     {
         $data = $this->loadData();
 
-        $bookManager = $this->container->get('xidea_book.book.manager');
+        $authorManager = $this->container->get('xidea_book.author.manager');
         
-        foreach($data as $book) {
-            $bookManager->save($book);
+        foreach($data as $author) {
+            $authorManager->save($author);
         }
     }
     
@@ -53,17 +53,17 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
      */
     public function getOrder()
     {
-        return 3;
+        return 2;
     }
     
     /**
-     * Returns a book factory.
+     * Returns a author factory.
      * 
-     * @return \Xidea\Bundle\BookBundle\Model\BookFactory The book factory
+     * @return \Xidea\Bundle\BookBundle\Model\AuthorFactory The author factory
      */
-    protected function getBookFactory()
+    protected function getAuthorFactory()
     {
-        return $this->container->get('xidea_book.book.factory');
+        return $this->container->get('xidea_book.author.factory');
     }
     
     /**
@@ -73,23 +73,21 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
      */
     protected function loadData()
     {
-        $bookFactory = $this->getBookFactory();
+        $authorFactory = $this->getAuthorFactory();
         
-        $book1 = $bookFactory->create();
-        $book1->setTitle('Book 1');
-        $book1->setDescription('Book 1 description');
-        $book1->addBookAuthor($this->getReference('book-author-johndoe'));
-        $book1->setPublisher($this->getReference('book-publisher-acme'));
+        $johndoe = $authorFactory->create();
+        $johndoe->setName('John Doe');
+        $johndoe->setDescription('John Doe description');
+        $this->setReference('book-author-johndoe', $johndoe);
         
-        $book2 = $bookFactory->create();
-        $book2->setTitle('Book 2');
-        $book2->setDescription('Book 2 description');
-        $book2->addBookAuthor($this->getReference('book-author-janedoe'));
-        $book2->setPublisher($this->getReference('book-publisher-bigben'));
+        $janedoe = $authorFactory->create();
+        $janedoe->setName('Jane Doe');
+        $janedoe->setDescription('Jane Doe description');
+        $this->setReference('book-author-janedoe', $janedoe);
         
         return array(
-            $book1,
-            $book2
+            $johndoe,
+            $janedoe
         );
     }
  

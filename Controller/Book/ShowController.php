@@ -9,34 +9,42 @@
 
 namespace Xidea\Bundle\BookBundle\Controller\Book;
 
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Xidea\Component\Book\Loader\BookLoaderInterface;
 use Xidea\Bundle\BaseBundle\ConfigurationInterface,
-    Xidea\Bundle\BaseBundle\Controller\AbstractListController;
+    Xidea\Bundle\BaseBundle\Controller\AbstractShowController;
+use Xidea\Component\Book\Model\BookInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class ListController extends AbstractListController
+class ShowController extends AbstractShowController
 {
     /*
      * @var BookLoaderInterface
      */
+
     protected $bookLoader;
 
     public function __construct(ConfigurationInterface $configuration, BookLoaderInterface $bookLoader)
     {
         parent::__construct($configuration);
-        
+
         $this->bookLoader = $bookLoader;
     }
-    
-    protected function loadObjects(Request $request)
+
+    protected function loadObject($id)
     {
-        return $this->bookLoader->loadAll();
+        $book = $this->bookLoader->load($id);
+
+        if (!$book instanceof BookInterface) {
+            throw new NotFoundHttpException('book.not_found');
+        }
+
+        return $book;
     }
-    
-    protected function onPreList($objects, $request)
+
+    protected function onPreShow($object, $request)
     {
         return;
     }

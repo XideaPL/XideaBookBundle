@@ -1,8 +1,20 @@
 parameters:
-    xidea_book.publisher_factory.class: Xidea\Component\Book\Factory\PublisherFactory
+    xidea_book.publisher.configuration.default.class: Xidea\Bundle\BaseBundle\Configuration
+    xidea_book.publisher.factory.default.class: Xidea\Component\Book\Factory\PublisherFactory
+    xidea_book.publisher.template.configuration.default.class: Xidea\Bundle\BaseBundle\TemplateConfiguration
   
 services:
-    xidea_book.publisher_factory.default:
-        class: %xidea_book.publisher_factory.class%
+    xidea_book.publisher.configuration.default:
+        class: %xidea_book.publisher.configuration.default.class%
+        arguments:
+            - @xidea_book.publisher.template.configuration
+    xidea_book.publisher.template.configuration.default:
+        class: %xidea_book.publisher.template.configuration.default.class%
+        arguments:
+            - %xidea_book.publisher.template.namespace%
+            - %xidea_book.publisher.template.templates%
+            - %xidea_book.publisher.template.engine%
+    xidea_book.publisher.factory.default:
+        class: %xidea_book.publisher.factory.default.class%
         arguments:
             - %xidea_book.publisher.class%

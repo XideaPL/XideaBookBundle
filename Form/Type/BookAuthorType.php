@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookType extends AbstractType
+class BookAuthorType extends AbstractType
 {
     /*
      * var string
@@ -36,11 +36,11 @@ class BookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('title', null, array(
-                    'label' => 'book.name'
+                ->add('name', null, array(
+                    'label' => 'author.name'
                 ))
                 ->add('description', null, array(
-                    'label' => 'book.description'
+                    'label' => 'author.description'
                 ))
         ;
     }
@@ -54,7 +54,7 @@ class BookType extends AbstractType
 
     public function getName()
     {
-        return 'xidea_book';
+        return 'xidea_book_author';
     }
 
 }

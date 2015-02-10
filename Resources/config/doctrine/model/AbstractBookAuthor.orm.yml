@@ -1,0 +1,16 @@
+Xidea\Component\Book\Model\AbstractBookAuthor:
+    type: mappedSuperclass
+    repositoryClass: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookAuthorRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+#    lifecycleCallbacks:
+#        prePersist: [ prePersist ]
+#        preUpdate: [ preUpdate ]

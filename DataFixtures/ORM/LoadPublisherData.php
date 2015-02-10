@@ -41,7 +41,7 @@ class LoadPublisherData extends AbstractFixture implements OrderedFixtureInterfa
     {
         $data = $this->loadData();
 
-        $publisherManager = $this->container->get('xidea_book.publisher_manager');
+        $publisherManager = $this->container->get('xidea_book.publisher.manager');
         
         foreach($data as $publisher) {
             $publisherManager->save($publisher);
@@ -63,7 +63,7 @@ class LoadPublisherData extends AbstractFixture implements OrderedFixtureInterfa
      */
     protected function getPublisherFactory()
     {
-        return $this->container->get('xidea_book.publisher_factory');
+        return $this->container->get('xidea_book.publisher.factory');
     }
     
     /**

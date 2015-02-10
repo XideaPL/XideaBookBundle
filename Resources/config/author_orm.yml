@@ -1,21 +1,21 @@
 parameters:
-    xidea_book.author_repository.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\AuthorRepository
-    xidea_book.author_loader.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Loader\AuthorLoader
-    xidea_book.author_manager.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Manager\AuthorManager
+    xidea_book.author.repository.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookAuthorRepository
+    xidea_book.author.loader.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Loader\BookAuthorLoader
+    xidea_book.author.manager.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Manager\BookAuthorManager
   
 services:
-    xidea_book.author_repository.default:
-        class: %xidea_book.author_repository.default.class%
+    xidea_book.author.repository.default:
+        class: %xidea_book.author.repository.default.class%
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments:
             - %xidea_book.author.class%
-    xidea_book.author_loader.default:
-        class: %xidea_book.author_loader.default.class%
+    xidea_book.author.loader.default:
+        class: %xidea_book.author.loader.default.class%
         arguments:
-            - @xidea_book.author_repository.default
-    xidea_book.author_manager.default:
-        class: %xidea_book.author_manager.default.class%
+            - @xidea_book.author.repository.default
+    xidea_book.author.manager.default:
+        class: %xidea_book.author.manager.default.class%
         arguments:
             - @doctrine.orm.entity_manager
             - @event_dispatcher

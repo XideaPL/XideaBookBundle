@@ -9,6 +9,8 @@
 
 namespace Xidea\Bundle\BookBundle\Tests\Fixtures\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Xidea\Component\Book\Model\AbstractBook;
 
 /**
@@ -16,6 +18,11 @@ use Xidea\Component\Book\Model\AbstractBook;
  */
 class Book extends AbstractBook
 {
+    public function __construct()
+    {
+        $this->bookAuthors = new ArrayCollection();
+    }
+    
     public function setId($id)
     {
         $this->id = $id;

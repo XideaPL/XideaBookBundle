@@ -7,17 +7,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Xidea\Bundle\BookBundle\Tests\Fixtures\Model;
-
-use Xidea\Bundle\UserBundle\Model\AbstractAdvancedUser;
+namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Repository;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class User extends AbstractAdvancedUser
+interface BookAuthorRepositoryInterface
 {
-    public function getName()
-    {
-        return $this->getUsername();
-    }
 }

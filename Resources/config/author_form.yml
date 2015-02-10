@@ -1,19 +1,24 @@
+parameters:
+    xidea_book.author.form.type.class: Xidea\Bundle\BookBundle\Form\Type\BookAuthorType
+    xidea_book.author.form.create.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
+    xidea_book.author.form.create.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\BookAuthorFormHandler
+
 services:
     xidea_book.author.form.type:
-        class: Xidea\Bundle\BookBundle\Form\Type\AuthorType
+        class: %xidea_book.author.form.type.class%
         arguments:
             - %xidea_book.author.class%
         tags:
             - { name: form.type, alias: "xidea_author" }
-    xidea_book.author_create.form.factory:
-        class: Xidea\Bundle\BookBundle\Form\Factory\FormFactory
+    xidea_book.author.form.create.factory.default:
+        class: %xidea_book.author.form.create.factory.default.class%
         arguments:
             - @form.factory
-            - %xidea_book.author_create.form.name%
-            - %xidea_book.author_create.form.type%
-            - %xidea_book.author_create.form.validation_groups%
-    xidea_book.author_create.form.handler:
-        class: Xidea\Bundle\BookBundle\Form\Handler\AuthorFormHandler
+            - %xidea_book.author.form.create.name%
+            - %xidea_book.author.form.create.type%
+            - %xidea_book.author.form.create.validation_groups%
+    xidea_book.author.form.create.handler.default:
+        class: %xidea_book.author.form.create.handler.default.class%
         arguments:
-            - @xidea_book.author_create.form.factory
+            - @xidea_book.author.form.create.factory
             - @event_dispatcher

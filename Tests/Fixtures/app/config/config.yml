@@ -56,46 +56,66 @@ doctrine:
                         prefix: Xidea\Bundle\BookBundle\Tests\Fixtures\Model
                         is_bundle: false
         resolve_target_entities:
-            Xidea\Component\Book\Model\AuthorInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author
+            Xidea\Component\Book\Model\BookAuthorInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\BookAuthor
             Xidea\Component\Book\Model\PublisherInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Publisher
             Xidea\Component\Book\Model\BookInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book
             
 xidea_user:
     user:
         class: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\User
-        factory: xidea_user.user_factory.default
-        manager: xidea_user.user_manager.default
-        loader: xidea_user.user_loader.default
-        create:
-            form:
+        configuration: xidea_user.user.configuration.default
+        factory: xidea_user.user.factory.default
+        manager: xidea_user.user.manager.default
+        loader: xidea_user.user.loader.default
+        form:
+            create:
+                factory: xidea_user.user.form.create.factory.default
+                handler: xidea_user.user.form.create.handler.default
                 type: xidea_user
                 name: user_create
+        template:
+            configuration: xidea_user.user.template.configuration.default
             
 xidea_book:
     book:
         class: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book
-        factory: xidea_book.book_factory.default
-        manager: xidea_book.book_manager.default
-        loader: xidea_book.book_loader.default
-        create:
-            form:
+        configuration: xidea_book.book.configuration.default
+        factory: xidea_book.book.factory.default
+        manager: xidea_book.book.manager.default
+        loader: xidea_book.book.loader.default
+        form:
+            create:
+                factory: xidea_book.book.form.create.factory.default
+                handler: xidea_book.book.form.create.handler.default
                 type: xidea_book
                 name: book_create
+        template:
+            configuration: xidea_book.book.template.configuration.default
     author:
-        class: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author
-        factory: xidea_book.author_factory.default
-        manager: xidea_book.author_manager.default
-        loader: xidea_book.author_loader.default
-        create:
-            form:
+        class: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\BookAuthor
+        configuration: xidea_book.author.configuration.default
+        factory: xidea_book.author.factory.default
+        manager: xidea_book.author.manager.default
+        loader: xidea_book.author.loader.default
+        form:
+            create:
+                factory: xidea_book.author.form.create.factory.default
+                handler: xidea_book.author.form.create.handler.default
                 type: xidea_book_author
                 name: author_create
+        template:
+            configuration: xidea_book.author.template.configuration.default
     publisher:
         class: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Publisher
-        factory: xidea_book.publisher_factory.default
-        manager: xidea_book.publisher_manager.default
-        loader: xidea_book.publisher_loader.default
-        create:
-            form:
+        configuration: xidea_book.publisher.configuration.default
+        factory: xidea_book.publisher.factory.default
+        manager: xidea_book.publisher.manager.default
+        loader: xidea_book.publisher.loader.default
+        form:
+            create:
+                factory: xidea_book.publisher.form.create.factory.default
+                handler: xidea_book.publisher.form.create.handler.default
                 type: xidea_book_publisher
                 name: publisher_create
+        template:
+            configuration: xidea_book.publisher.template.configuration.default

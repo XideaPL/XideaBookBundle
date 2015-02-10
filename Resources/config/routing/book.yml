@@ -2,9 +2,9 @@ xidea_book_list:
     pattern:  /
     defaults: { _controller: xidea_book.controller.list:listAction }
  
-xidea_book_view:
+xidea_book_show:
     pattern:  /book/{id}
-    defaults: { _controller: xidea_book.controller.view:viewAction }
+    defaults: { _controller: xidea_book.controller.show:showAction }
     requirements:
         id:  \d+
     
