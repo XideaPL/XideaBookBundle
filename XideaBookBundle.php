@@ -9,10 +9,8 @@ use Xidea\Bundle\BaseBundle\AbstractBundle;
 
 class XideaBookBundle extends AbstractBundle
 {
-    protected function getModelMappings()
+    protected function getModelNamespace()
     {
-        return array(
-            realpath(__DIR__ . '/Resources/config/doctrine/model') => 'Xidea\Component\Book\Model',
-        );
+        return 'Xidea\Component\Book\Model';
     }
 }
