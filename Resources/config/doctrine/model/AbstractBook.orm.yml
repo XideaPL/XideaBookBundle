@@ -6,11 +6,57 @@ Xidea\Component\Book\Model\AbstractBook:
             type: integer
             generator: { strategy: AUTO }
     fields:
+        slug:
+            type: string
+            length: 255
+            nullable: true
+        isbn:
+            type: string
+            length: 64
+        ean:
+            type: string
+            length: 64
         title:
             type: string
             length: 255
         description:
             type: text
+            nullable: true
+        shortDescription:
+            type: string
+            length: 512
+            nullable: true
+        series:
+            type: string
+            length: 255
+            nullable: true
+        binding:
+            type: integer
+            nullable: true
+        premiere:
+            column: premiere
+            type: date
+            nullable: true
+        releaseYear:
+            type: integer
+            nullable: true
+        releaseNumber:
+            type: integer
+            nullable: true
+        pages:
+            type: integer
+            nullable: true
+        dimensions:
+            type: string
+            length: 64
+            nullable: true
+        price:
+            type: decimal
+            nullable: true
+        imagePath:
+            type: string
+            length: 255
+            nullable: true
         createdAt:
             column: created_at
             type: datetime
@@ -37,7 +83,7 @@ Xidea\Component\Book\Model\AbstractBook:
             joinColumn:
                 name: publisher_id
                 referencedColumnName: id
-                nullable: false
+                nullable: true
 #    lifecycleCallbacks:
 #        prePersist: [ prePersist ]
 #        preUpdate: [ preUpdate ]

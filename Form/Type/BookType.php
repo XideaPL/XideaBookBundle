@@ -36,12 +36,48 @@ class BookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('title', null, array(
-                    'label' => 'book.name'
-                ))
-                ->add('description', null, array(
-                    'label' => 'book.description'
-                ))
+            ->add('slug', null, array(
+                'label' => 'book.slug'
+            ))
+            ->add('isbn', null, array(
+                'label' => 'book.isbn'
+            ))
+            ->add('title', null, array(
+                'label' => 'book.name'
+            ))
+            ->add('description', null, array(
+                'label' => 'book.description'
+            ))
+            ->add('shortDescription', null, array(
+                'label' => 'book.shortDescription'
+            ))
+            ->add('series', null, array(
+                'label' => 'book.series'
+            ))
+            ->add('binding', null, array(
+                'label' => 'book.binding'
+            ))
+            ->add('premiere', null, array(
+                'label' => 'book.premiere'
+            ))
+            ->add('releaseYear', null, array(
+                'label' => 'book.releaseYear'
+            ))
+            ->add('releaseNumber', null, array(
+                'label' => 'book.releaseNumber'
+            ))
+            ->add('pages', null, array(
+                'label' => 'book.pages'
+            ))
+            ->add('dimensions', null, array(
+                'label' => 'book.dimensions'
+            ))
+            ->add('price', null, array(
+                'label' => 'book.price'
+            ))
+            ->add('imagePath', null, array(
+                'label' => 'book.imagePath'
+            ))
         ;
     }
 
