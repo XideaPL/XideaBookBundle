@@ -53,6 +53,15 @@ class BookTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('9788375747478', $book->getIsbn());
     }
     
+    public function testCategory()
+    {
+        $book = $this->createBook();
+        $this->assertNull($book->getCategory());
+        
+        $book->setCategory('Category 1');
+        $this->assertEquals('Category 1', $book->getCategory());
+    }
+    
     public function testTitle()
     {
         $book = $this->createBook();

@@ -16,6 +16,10 @@ Xidea\Component\Book\Model\AbstractBook:
         ean:
             type: string
             length: 64
+        category:
+            type: string
+            length: 255
+            nullable: true
         title:
             type: string
             length: 255

@@ -13,6 +13,8 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Doctrine\ORM\EntityManager;
 
+use Xidea\Component\Base\Doctrine\ORM\ObjectManagerInterface;
+
 use Xidea\Component\Book\Manager\BookManagerInterface,
     Xidea\Component\Book\Model\BookInterface;
 
@@ -22,8 +24,13 @@ use Xidea\Bundle\BookBundle\BookEvents,
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookManager implements BookManagerInterface
+class BookManager implements ObjectManagerInterface, BookManagerInterface
 {
+    /*
+     * @var bool
+     */
+    protected $flushMode;
+    
     /*
      * @var EntityManager
      */
@@ -44,6 +51,22 @@ class BookManager implements BookManagerInterface
         $this->entityManager = $entityManager;
         $this->eventDispatcher = $eventDispatcher;
     }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setFlushMode($flushMode = true)
+    {
+        $this->flushMode = $flushMode;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function isFlushMode()
+    {
+        return $this->flushMode;
+    }
 
     /**
      * {@inheritdoc}
@@ -54,7 +77,8 @@ class BookManager implements BookManagerInterface
         
         $this->entityManager->persist($book);
 
-        $this->entityManager->flush();
+        if($this->isFlushMode())
+            $this->entityManager->flush();
         
         $this->eventDispatcher->dispatch(BookEvents::POST_SAVE, new BookEvent($book));
 
@@ -65,7 +89,8 @@ class BookManager implements BookManagerInterface
     {  
         $this->entityManager->persist($book);
 
-        $this->entityManager->flush();
+        if($this->isFlushMode())
+            $this->entityManager->flush();
 
         return $book->getId();
     }
@@ -78,4 +103,19 @@ class BookManager implements BookManagerInterface
         $this->entityManager->remove($book);
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function flush()
+    {
+        $this->entityManager->flush();
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function clear()
+    {
+        $this->entityManager->clear();
+    }
 }
