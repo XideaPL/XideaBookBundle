@@ -83,7 +83,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
         $book1->setDescription('Book 1 description');
         $book1->setShortDescription('Book 1 short description');
         $book1->setSeries('Book 1 Series');
-        $book1->setBinding(1);
+        $book1->setCover(1);
         $book1->setPremiere(new \DateTime('2012-03-26'));
         $book1->setReleaseYear(2012);
         $book1->setReleaseNumber(2);
@@ -103,7 +103,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
         $book2->setDescription('Book 2 description');
         $book2->setShortDescription('Book 2 short description');
         $book2->setSeries('Book 2 Series');
-        $book2->setBinding(2);
+        $book2->setCover(2);
         $book2->setPremiere(new \DateTime('2015-09-14'));
         $book2->setReleaseYear(2015);
         $book2->setReleaseNumber(1);

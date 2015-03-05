@@ -54,8 +54,8 @@ class BookType extends AbstractType
             ->add('series', null, array(
                 'label' => 'book.series'
             ))
-            ->add('binding', null, array(
-                'label' => 'book.binding'
+            ->add('cover', null, array(
+                'label' => 'book.cover'
             ))
             ->add('premiere', null, array(
                 'label' => 'book.premiere'

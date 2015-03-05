@@ -34,7 +34,7 @@ Xidea\Component\Book\Model\AbstractBook:
             type: string
             length: 255
             nullable: true
-        binding:
+        cover:
             type: integer
             nullable: true
         premiere:

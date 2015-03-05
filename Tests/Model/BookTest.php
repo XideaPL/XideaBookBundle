@@ -9,7 +9,8 @@
 
 namespace Xidea\Bundle\BookBundle\Tests\Model;
 
-use Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book,
+use Xidea\Component\Book\Model\BookInterface,
+    Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book,
     Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author;
 
 /**
@@ -106,13 +107,13 @@ class BookTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($series, $book->getSeries());
     }
     
-    public function testBinding()
+    public function testCover()
     {
         $book = $this->createBook();
-        $this->assertNull($book->getBinding());
+        $this->assertNull($book->getCover());
         
-        $book->setBinding(1);
-        $this->assertEquals(1, $book->getBinding());
+        $book->setCover(BookInterface::COVER_SOFT);
+        $this->assertEquals(BookInterface::COVER_SOFT, $book->getCover());
     }
     
     public function testPremiere()

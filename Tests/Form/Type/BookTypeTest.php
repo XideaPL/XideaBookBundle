@@ -10,6 +10,7 @@
 namespace Xidea\Bundle\BookBundle\Tests\Form\Type;
 
 use Xidea\Bundle\BookBundle\Form\Type\BookType,
+    Xidea\Component\Book\Model\BookInterface,
     Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book;
 
 use Symfony\Component\Form\Test\TypeTestCase,
@@ -29,7 +30,7 @@ class BookTypeTest extends TypeTestCase
             'description' => 'Book 1 description',
             'shortDescription' => 'Book 1 short description',
             'series' => 'Book 1 Series',
-            'binding' => 1,
+            'cover' => BookInterface::COVER_HARD,
             'premiere' => new \DateTime('2012-03-26'),
             'releaseYear' => 2012,
             'releaseNumber' => 2,
