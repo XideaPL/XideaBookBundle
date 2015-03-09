@@ -72,7 +72,8 @@ class BookAuthorManager implements ObjectManagerInterface, BookAuthorManagerInte
     {
         $this->entityManager->persist($author);
 
-        $this->entityManager->flush();
+        if($this->isFlushMode())
+            $this->entityManager->flush();
 
         return $author->getId();
     }
@@ -81,7 +82,8 @@ class BookAuthorManager implements ObjectManagerInterface, BookAuthorManagerInte
     {  
         $this->entityManager->persist($author);
 
-        $this->entityManager->flush();
+        if($this->isFlushMode())
+            $this->entityManager->flush();
 
         return $author->getId();
     }
