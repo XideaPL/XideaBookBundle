@@ -11,6 +11,7 @@ Xidea\Component\Book\Model\AbstractBookAuthor:
             length: 255
         description:
             type: text
+            nullable: true
 #    lifecycleCallbacks:
 #        prePersist: [ prePersist ]
 #        preUpdate: [ preUpdate ]

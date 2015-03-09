@@ -10,7 +10,9 @@ Xidea\Component\Book\Model\AbstractPublisher:
             type: string
             length: 255
         description:
-            type: text
+            type: string
+            length: 512
+            nullable: true
 #    lifecycleCallbacks:
 #        prePersist: [ prePersist ]
 #        preUpdate: [ preUpdate ]
