@@ -13,14 +13,21 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Doctrine\ORM\EntityManager;
 
+use Xidea\Component\Base\Doctrine\ORM\ObjectManagerInterface;
+
 use Xidea\Component\Book\Manager\BookAuthorManagerInterface,
     Xidea\Component\Book\Model\BookAuthorInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookAuthorManager implements BookAuthorManagerInterface
+class BookAuthorManager implements ObjectManagerInterface, BookAuthorManagerInterface
 {
+    /*
+     * @var bool
+     */
+    protected $flushMode;
+    
     /*
      * @var EntityManager
      */
@@ -40,6 +47,22 @@ class BookAuthorManager implements BookAuthorManagerInterface
     {
         $this->entityManager = $entityManager;
         $this->eventDispatcher = $eventDispatcher;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setFlushMode($flushMode = true)
+    {
+        $this->flushMode = $flushMode;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function isFlushMode()
+    {
+        return $this->flushMode;
     }
 
     /**
@@ -71,4 +94,19 @@ class BookAuthorManager implements BookAuthorManagerInterface
         $this->entityManager->remove($author);
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function flush()
+    {
+        $this->entityManager->flush();
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function clear()
+    {
+        $this->entityManager->clear();
+    }
 }
