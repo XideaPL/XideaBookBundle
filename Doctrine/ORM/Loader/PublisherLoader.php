@@ -11,8 +11,8 @@ namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Loader;
 
 use Doctrine\ORM\EntityManager;
 
-use Xidea\Component\Book\Loader\PublisherLoaderInterface,
-    Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\PublisherRepositoryInterface;
+use Xidea\Component\Book\Loader\PublisherLoaderInterface;
+use Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\PublisherRepositoryInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
@@ -22,7 +22,7 @@ class PublisherLoader implements PublisherLoaderInterface
     /*
      * @var PublisherRepositoryInterface
      */
-    protected $publisherRepository;
+    protected $repository;
     
     /**
      * Constructs a comment repository.
@@ -30,9 +30,9 @@ class PublisherLoader implements PublisherLoaderInterface
      * @param string $class The class
      * @param EntityManager The entity manager
      */
-    public function __construct(PublisherRepositoryInterface $publisherRepository)
+    public function __construct(PublisherRepositoryInterface $repository)
     {
-        $this->publisherRepository = $publisherRepository;
+        $this->repository = $repository;
     }
 
     /**
@@ -40,7 +40,7 @@ class PublisherLoader implements PublisherLoaderInterface
      */
     public function load($id)
     {
-        return $this->publisherRepository->find($id);
+        return $this->repository->find($id);
     }
 
     /**
@@ -48,7 +48,7 @@ class PublisherLoader implements PublisherLoaderInterface
      */
     public function loadAll()
     {
-        return $this->publisherRepository->findAll();
+        return $this->repository->findAll();
     }
 
     /*
@@ -56,7 +56,7 @@ class PublisherLoader implements PublisherLoaderInterface
      */
     public function loadBy(array $criteria, array $orderBy = array(), $limit = null, $offset = null)
     {
-        return $this->publisherRepository->findBy($criteria, $orderBy, $limit, $offset);
+        return $this->repository->findBy($criteria, $orderBy, $limit, $offset);
     }
     
     /*
@@ -64,6 +64,14 @@ class PublisherLoader implements PublisherLoaderInterface
      */
     public function loadOneBy(array $criteria, array $orderBy = array())
     {
-        return $this->publisherRepository->findOneBy($criteria, $orderBy);
+        return $this->repository->findOneBy($criteria, $orderBy);
+    }
+    
+    /*
+     * {@inheritdoc}
+     */
+    public function loadByName($name)
+    {
+        return $this->repository->findByName($name);
     }
 }

@@ -11,8 +11,8 @@ namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Loader;
 
 use Doctrine\ORM\EntityManager;
 
-use Xidea\Component\Book\Loader\BookAuthorLoaderInterface,
-    Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookAuthorRepositoryInterface;
+use Xidea\Component\Book\Loader\BookAuthorLoaderInterface;
+use Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookAuthorRepositoryInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
@@ -22,7 +22,7 @@ class BookAuthorLoader implements BookAuthorLoaderInterface
     /*
      * @var BookAuthorRepositoryInterface
      */
-    protected $authorRepository;
+    protected $repository;
     
     /**
      * Constructs a comment repository.
@@ -30,9 +30,9 @@ class BookAuthorLoader implements BookAuthorLoaderInterface
      * @param string $class The class
      * @param EntityManager The entity manager
      */
-    public function __construct(BookAuthorRepositoryInterface $authorRepository)
+    public function __construct(BookAuthorRepositoryInterface $repository)
     {
-        $this->authorRepository = $authorRepository;
+        $this->repository = $repository;
     }
 
     /**
@@ -40,7 +40,7 @@ class BookAuthorLoader implements BookAuthorLoaderInterface
      */
     public function load($id)
     {
-        return $this->authorRepository->find($id);
+        return $this->repository->find($id);
     }
 
     /**
@@ -48,7 +48,7 @@ class BookAuthorLoader implements BookAuthorLoaderInterface
      */
     public function loadAll()
     {
-        return $this->authorRepository->findAll();
+        return $this->repository->findAll();
     }
 
     /*
@@ -56,7 +56,7 @@ class BookAuthorLoader implements BookAuthorLoaderInterface
      */
     public function loadBy(array $criteria, array $orderBy = array(), $limit = null, $offset = null)
     {
-        return $this->authorRepository->findBy($criteria, $orderBy, $limit, $offset);
+        return $this->repository->findBy($criteria, $orderBy, $limit, $offset);
     }
     
     /*
@@ -64,6 +64,14 @@ class BookAuthorLoader implements BookAuthorLoaderInterface
      */
     public function loadOneBy(array $criteria, array $orderBy = array())
     {
-        return $this->authorRepository->findOneBy($criteria, $orderBy);
+        return $this->repository->findOneBy($criteria, $orderBy);
+    }
+    
+    /*
+     * {@inheritdoc}
+     */
+    public function loadByName($name)
+    {
+        return $this->repository->findByName($name);
     }
 }

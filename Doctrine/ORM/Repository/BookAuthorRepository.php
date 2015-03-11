@@ -16,4 +16,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class BookAuthorRepository extends EntityRepository implements BookAuthorRepositoryInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function findByName($name)
+    {
+        $qb = $this->createQueryBuilder('p');
+        
+        $qb
+            ->where(is_array($name) ? $qb->expr()->in('p.name', ':name') : $qb->expr()->eq('p.name', ':name'))
+            ->setParameters(array(
+                'name' => $name
+            ))
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

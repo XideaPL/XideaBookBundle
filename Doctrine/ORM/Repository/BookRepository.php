@@ -18,6 +18,9 @@ use Xidea\Component\Book\Model\AuthorInterface;
  */
 class BookRepository extends EntityRepository implements BookRepositoryInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function findByAuthorQB(AuthorInterface $author)
     {
         $qb = $this->createQueryBuilder('b');
@@ -38,6 +41,9 @@ class BookRepository extends EntityRepository implements BookRepositoryInterface
         return $qb;
     }
     
+    /**
+     * {@inheritdoc}
+     */
     public function findByAuthor(AuthorInterface $author)
     {
         $qb = $this->findByAuthorQB($author);

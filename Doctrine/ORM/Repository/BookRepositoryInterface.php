@@ -17,6 +17,28 @@ use Xidea\Component\Book\Model\AuthorInterface;
 interface BookRepositoryInterface
 {
     /**
+     * @param int $id
+     * 
+     * @return object
+     */
+    function find($id);
+    
+    /**
+     * @return array
+     */
+    function findAll();
+    
+    /**
+     * @return array
+     */
+    function findBy(array $criteria, array $orderBy = array(), $limit = null, $offset = null);
+    
+    /**
+     * @return array
+     */
+    function findOneBy(array $criteria, array $orderBy = array());
+    
+    /**
      * Returns a query builder.
      * 
      * @return object

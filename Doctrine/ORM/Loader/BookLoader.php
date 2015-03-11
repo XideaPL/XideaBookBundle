@@ -22,7 +22,7 @@ class BookLoader implements BookLoaderInterface
     /*
      * @var BookRepositoryInterface
      */
-    protected $bookRepository;
+    protected $repository;
     
     /**
      * Constructs a comment repository.
@@ -30,9 +30,9 @@ class BookLoader implements BookLoaderInterface
      * @param string $class The class
      * @param EntityManager The entity manager
      */
-    public function __construct(BookRepositoryInterface $bookRepository)
+    public function __construct(BookRepositoryInterface $repository)
     {
-        $this->bookRepository = $bookRepository;
+        $this->repository = $repository;
     }
 
     /**
@@ -40,7 +40,7 @@ class BookLoader implements BookLoaderInterface
      */
     public function load($id)
     {
-        return $this->bookRepository->find($id);
+        return $this->repository->find($id);
     }
 
     /**
@@ -48,7 +48,7 @@ class BookLoader implements BookLoaderInterface
      */
     public function loadAll()
     {
-        return $this->bookRepository->findAll();
+        return $this->repository->findAll();
     }
 
     /*
@@ -56,7 +56,7 @@ class BookLoader implements BookLoaderInterface
      */
     public function loadBy(array $criteria, array $orderBy = array(), $limit = null, $offset = null)
     {
-        return $this->bookRepository->findBy($criteria, $orderBy, $limit, $offset);
+        return $this->repository->findBy($criteria, $orderBy, $limit, $offset);
     }
     
     /*
@@ -64,6 +64,6 @@ class BookLoader implements BookLoaderInterface
      */
     public function loadOneBy(array $criteria, array $orderBy = array())
     {
-        return $this->bookRepository->findOneBy($criteria, $orderBy);
+        return $this->repository->findOneBy($criteria, $orderBy);
     }
 }
