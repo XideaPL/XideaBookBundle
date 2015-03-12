@@ -9,8 +9,7 @@
 
 namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Repository;
 
-use Doctrine\ORM\EntityRepository,
-    Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
@@ -24,11 +23,14 @@ class PublisherRepository extends EntityRepository implements PublisherRepositor
     {
         $qb = $this->createQueryBuilder('p');
         
-        $isArrayNames = is_array($name);
-        $qb
-            ->where($isArrayNames ? $qb->expr()->in('p.name', ':name') : $qb->expr()->eq('p.name', ':name'))
-            ->setParameter('name', $name, $isArrayNames ? Type::SIMPLE_ARRAY : null)
-        ;
+        if(is_array($name)) {
+            $qb->where($qb->expr()->in('p.name', $name));
+        } else {
+            $qb
+                ->where($qb->expr()->eq('p.name', ':name'))
+                ->setParameter('name', $name)
+            ;
+        }
 
         return $qb->getQuery()->getResult();
     }
