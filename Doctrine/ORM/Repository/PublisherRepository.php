@@ -25,9 +25,7 @@ class PublisherRepository extends EntityRepository implements PublisherRepositor
         
         $qb
             ->where(is_array($name) ? $qb->expr()->in('p.name', ':name') : $qb->expr()->eq('p.name', ':name'))
-            ->setParameters(array(
-                'name' => $name
-            ))
+            ->setParameter('name', $name)
         ;
 
         return $qb->getQuery()->getResult();

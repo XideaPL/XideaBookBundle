@@ -21,13 +21,11 @@ class BookAuthorRepository extends EntityRepository implements BookAuthorReposit
      */
     public function findByName($name)
     {
-        $qb = $this->createQueryBuilder('p');
+        $qb = $this->createQueryBuilder('a');
         
         $qb
-            ->where(is_array($name) ? $qb->expr()->in('p.name', ':name') : $qb->expr()->eq('p.name', ':name'))
-            ->setParameters(array(
-                'name' => $name
-            ))
+            ->where(is_array($name) ? $qb->expr()->in('a.name', ':name') : $qb->expr()->eq('a.name', ':name'))
+            ->setParameter('name', $name)
         ;
 
         return $qb->getQuery()->getResult();
