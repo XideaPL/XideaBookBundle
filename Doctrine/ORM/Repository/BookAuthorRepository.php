@@ -9,7 +9,8 @@
 
 namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Repository;
 
-use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\EntityRepository,
+    Doctrine\DBAL\Types\Type;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
@@ -23,9 +24,10 @@ class BookAuthorRepository extends EntityRepository implements BookAuthorReposit
     {
         $qb = $this->createQueryBuilder('a');
         
+        $isArrayNames = is_array($name);
         $qb
-            ->where(is_array($name) ? $qb->expr()->in('a.name', ':name') : $qb->expr()->eq('a.name', ':name'))
-            ->setParameter('name', $name)
+            ->where($isArrayNames ? $qb->expr()->in('a.name', ':name') : $qb->expr()->eq('a.name', ':name'))
+            ->setParameter('name', $name, $isArrayNames ? Type::SIMPLE_ARRAY : null)
         ;
 
         return $qb->getQuery()->getResult();
