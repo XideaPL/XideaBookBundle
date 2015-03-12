@@ -47,6 +47,8 @@ class BookAuthorManager implements ObjectManagerInterface, BookAuthorManagerInte
     {
         $this->entityManager = $entityManager;
         $this->eventDispatcher = $eventDispatcher;
+        
+        $this->setFlushMode(true);
     }
     
     /**

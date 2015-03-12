@@ -13,14 +13,21 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Doctrine\ORM\EntityManager;
 
+use Xidea\Component\Base\Doctrine\ORM\ObjectManagerInterface;
+
 use Xidea\Component\Book\Manager\PublisherManagerInterface,
     Xidea\Component\Book\Model\PublisherInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class PublisherManager implements PublisherManagerInterface
+class PublisherManager implements ObjectManagerInterface, PublisherManagerInterface
 {
+    /*
+     * @var bool
+     */
+    protected $flushMode;
+    
     /*
      * @var EntityManager
      */
@@ -40,6 +47,24 @@ class PublisherManager implements PublisherManagerInterface
     {
         $this->entityManager = $entityManager;
         $this->eventDispatcher = $eventDispatcher;
+        
+        $this->setFlushMode(true);
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setFlushMode($flushMode = true)
+    {
+        $this->flushMode = $flushMode;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function isFlushMode()
+    {
+        return $this->flushMode;
     }
 
     /**
@@ -49,16 +74,21 @@ class PublisherManager implements PublisherManagerInterface
     {
         $this->entityManager->persist($publisher);
 
-        $this->entityManager->flush();
+        if($this->isFlushMode())
+            $this->entityManager->flush();
 
         return $publisher->getId();
     }
     
+    /**
+     * {@inheritdoc}
+     */
     public function update(PublisherInterface $publisher)
     {  
         $this->entityManager->persist($publisher);
 
-        $this->entityManager->flush();
+        if($this->isFlushMode())
+            $this->entityManager->flush();
 
         return $publisher->getId();
     }
@@ -70,5 +100,20 @@ class PublisherManager implements PublisherManagerInterface
     {
         $this->entityManager->remove($publisher);
     }
-
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function flush()
+    {
+        $this->entityManager->flush();
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function clear()
+    {
+        $this->entityManager->clear();
+    }
 }

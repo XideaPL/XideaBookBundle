@@ -50,6 +50,8 @@ class BookManager implements ObjectManagerInterface, BookManagerInterface
     {
         $this->entityManager = $entityManager;
         $this->eventDispatcher = $eventDispatcher;
+        
+        $this->setFlushMode(true);
     }
     
     /**
