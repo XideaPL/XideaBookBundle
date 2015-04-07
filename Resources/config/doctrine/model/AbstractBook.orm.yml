@@ -56,6 +56,8 @@ Xidea\Component\Book\Model\AbstractBook:
             nullable: true
         price:
             type: decimal
+            precision: 10
+            scale: 2
             nullable: true
         imagePath:
             type: string
@@ -77,10 +79,11 @@ Xidea\Component\Book\Model\AbstractBook:
                 joinColumns:
                     book_id:
                         referencedColumnName: id
+                        onDelete: CASCADE
                 inverseJoinColumns:
                     author_id:
                         referencedColumnName: id
-                        unique: true
+                        onDelete: CASCADE
     manyToOne:
         publisher:
             targetEntity: Xidea\Component\Book\Model\PublisherInterface
