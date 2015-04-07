@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  *
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookAuthorType extends AbstractType
+class AuthorType extends AbstractType
 {
     /*
      * var string

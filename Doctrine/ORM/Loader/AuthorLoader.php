@@ -11,16 +11,16 @@ namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Loader;
 
 use Doctrine\ORM\EntityManager;
 
-use Xidea\Component\Book\Loader\BookAuthorLoaderInterface;
-use Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookAuthorRepositoryInterface;
+use Xidea\Component\Book\Loader\AuthorLoaderInterface;
+use Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\AuthorRepositoryInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookAuthorLoader implements BookAuthorLoaderInterface
+class AuthorLoader implements AuthorLoaderInterface
 {
     /*
-     * @var BookAuthorRepositoryInterface
+     * @var AuthorRepositoryInterface
      */
     protected $repository;
     
@@ -30,7 +30,7 @@ class BookAuthorLoader implements BookAuthorLoaderInterface
      * @param string $class The class
      * @param EntityManager The entity manager
      */
-    public function __construct(BookAuthorRepositoryInterface $repository)
+    public function __construct(AuthorRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }

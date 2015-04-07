@@ -1,7 +1,7 @@
 parameters:
-    xidea_book.author.repository.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookAuthorRepository
-    xidea_book.author.loader.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Loader\BookAuthorLoader
-    xidea_book.author.manager.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Manager\BookAuthorManager
+    xidea_book.author.repository.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\AuthorRepository
+    xidea_book.author.loader.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Loader\AuthorLoader
+    xidea_book.author.manager.default.class: Xidea\Bundle\BookBundle\Doctrine\ORM\Manager\AuthorManager
   
 services:
     xidea_book.author.repository.default:

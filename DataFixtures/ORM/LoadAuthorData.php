@@ -19,7 +19,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @author Artur Pszczółka <artur.pszczolka@xidea.pl>
  */
-class LoadBookAuthorData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+class LoadAuthorData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface

@@ -22,7 +22,7 @@ use Xidea\Bundle\BookBundle\BookEvents;
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookAuthorFormHandler implements FormHandlerInterface
+class AuthorFormHandler implements FormHandlerInterface
 {
     /*
      * @var FormFactoryInterface

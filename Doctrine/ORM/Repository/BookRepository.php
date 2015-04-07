@@ -27,10 +27,10 @@ class BookRepository extends EntityRepository implements BookRepositoryInterface
         $qb
             ->select(array(
                 'b',
-                'b_author'
+                'ba'
             ))
-            ->join('b.author', 'b_author')
-            ->where($qb->expr()->eq('b.author', ':authorId'))
+            ->join('b.authors', 'ba')
+            ->where($qb->expr()->eq('b.authors', ':authorId'))
             ->setParameters(array(
                 'authorId' => $author->getId()
             ))

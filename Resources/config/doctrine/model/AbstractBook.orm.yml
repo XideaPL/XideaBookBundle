@@ -72,8 +72,8 @@ Xidea\Component\Book\Model\AbstractBook:
             type: datetime
             nullable: true
     manyToMany:
-        bookAuthors:
-            targetEntity: Xidea\Component\Book\Model\BookAuthorInterface
+        authors:
+            targetEntity: Xidea\Component\Book\Model\AuthorInterface
             joinTable:
                 name: book_book_author
                 joinColumns:

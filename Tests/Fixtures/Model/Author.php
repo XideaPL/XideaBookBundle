@@ -9,12 +9,12 @@
 
 namespace Xidea\Bundle\BookBundle\Tests\Fixtures\Model;
 
-use Xidea\Component\Book\Model\AbstractBookAuthor;
+use Xidea\Component\Book\Model\AbstractAuthor;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookAuthor extends AbstractBookAuthor
+class Author extends AbstractAuthor
 {
     public function setId($id)
     {

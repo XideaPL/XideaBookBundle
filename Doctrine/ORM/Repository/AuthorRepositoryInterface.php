@@ -12,7 +12,7 @@ namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Repository;
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-interface BookAuthorRepositoryInterface
+interface AuthorRepositoryInterface
 {
     /**
      * @param int $id

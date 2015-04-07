@@ -15,13 +15,13 @@ use Doctrine\ORM\EntityManager;
 
 use Xidea\Component\Base\Doctrine\ORM\ObjectManagerInterface;
 
-use Xidea\Component\Book\Manager\BookAuthorManagerInterface,
-    Xidea\Component\Book\Model\BookAuthorInterface;
+use Xidea\Component\Book\Manager\AuthorManagerInterface,
+    Xidea\Component\Book\Model\AuthorInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookAuthorManager implements ObjectManagerInterface, BookAuthorManagerInterface
+class AuthorManager implements ObjectManagerInterface, AuthorManagerInterface
 {
     /*
      * @var bool
@@ -70,7 +70,7 @@ class BookAuthorManager implements ObjectManagerInterface, BookAuthorManagerInte
     /**
      * {@inheritdoc}
      */
-    public function save(BookAuthorInterface $author)
+    public function save(AuthorInterface $author)
     {
         $this->entityManager->persist($author);
 
@@ -80,7 +80,7 @@ class BookAuthorManager implements ObjectManagerInterface, BookAuthorManagerInte
         return $author->getId();
     }
     
-    public function update(BookAuthorInterface $author)
+    public function update(AuthorInterface $author)
     {  
         $this->entityManager->persist($author);
 
@@ -93,7 +93,7 @@ class BookAuthorManager implements ObjectManagerInterface, BookAuthorManagerInte
     /**
      * {@inheritdoc}
      */
-    public function delete(BookAuthorInterface $author)
+    public function delete(AuthorInterface $author)
     {
         $this->entityManager->remove($author);
     }

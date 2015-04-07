@@ -9,6 +9,7 @@
 
 namespace Xidea\Bundle\BookBundle\Controller\Book;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Xidea\Component\Book\Loader\BookLoaderInterface;
 use Xidea\Bundle\BaseBundle\ConfigurationInterface,
@@ -44,7 +45,7 @@ class ShowController extends AbstractShowController
         return $book;
     }
 
-    protected function onPreShow($object, $request)
+    protected function onPreShow($object, Request $request)
     {
         return;
     }

@@ -1,6 +1,6 @@
 parameters:
     xidea_book.author.configuration.default.class: Xidea\Bundle\BaseBundle\Configuration
-    xidea_book.author.factory.default.class: Xidea\Component\Book\Factory\BookAuthorFactory
+    xidea_book.author.factory.default.class: Xidea\Component\Book\Factory\AuthorFactory
     xidea_book.author.template.configuration.default.class: Xidea\Bundle\BaseBundle\TemplateConfiguration
   
 services:

@@ -92,7 +92,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
         $book1->setPrice(39.90);
         $book1->setImagePath('book1-image-path.jpg');
         $book1->setCreatedAt(new \DateTime('2012-04-01'));
-        $book1->addBookAuthor($this->getReference('book-author-johndoe'));
+        $book1->addAuthor($this->getReference('book-author-johndoe'));
         $book1->setPublisher($this->getReference('book-publisher-acme'));
         
         $book2 = $bookFactory->create();
@@ -112,7 +112,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
         $book2->setPrice(39.90);
         $book2->setImagePath('book2-image-path.jpg');
         $book1->setCreatedAt(new \DateTime('2015-09-16'));
-        $book2->addBookAuthor($this->getReference('book-author-janedoe'));
+        $book2->addAuthor($this->getReference('book-author-janedoe'));
         $book2->setPublisher($this->getReference('book-publisher-bigben'));
         
         return array(

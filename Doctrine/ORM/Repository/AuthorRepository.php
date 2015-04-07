@@ -14,7 +14,7 @@ use Doctrine\ORM\EntityRepository;
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookAuthorRepository extends EntityRepository implements BookAuthorRepositoryInterface
+class AuthorRepository extends EntityRepository implements AuthorRepositoryInterface
 {
     /**
      * {@inheritdoc}

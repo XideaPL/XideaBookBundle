@@ -20,7 +20,7 @@ class Book extends AbstractBook
 {
     public function __construct()
     {
-        $this->bookAuthors = new ArrayCollection();
+        $this->authors = new ArrayCollection();
     }
     
     public function setId($id)

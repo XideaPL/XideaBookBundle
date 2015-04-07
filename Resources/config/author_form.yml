@@ -1,7 +1,7 @@
 parameters:
-    xidea_book.author.form.type.class: Xidea\Bundle\BookBundle\Form\Type\BookAuthorType
+    xidea_book.author.form.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorType
     xidea_book.author.form.create.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
-    xidea_book.author.form.create.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\BookAuthorFormHandler
+    xidea_book.author.form.create.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\AuthorFormHandler
 
 services:
     xidea_book.author.form.type:

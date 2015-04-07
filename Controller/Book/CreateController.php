@@ -9,6 +9,8 @@
 
 namespace Xidea\Bundle\BookBundle\Controller\Book;
 
+use Symfony\Component\HttpFoundation\Request,
+    Symfony\Component\HttpFoundation\Response;
 use Xidea\Component\Book\Builder\BookDirectorInterface,
     Xidea\Component\Book\Manager\BookManagerInterface;
 use Xidea\Bundle\BaseBundle\ConfigurationInterface,
@@ -45,14 +47,14 @@ class CreateController extends AbstractCreateController
         return $this->bookDirector->build();
     }
 
-    protected function onPreCreate($object, $request)
+    protected function onPreCreate($object, Request $request)
     {
         $this->dispatch(BookEvents::PRE_CREATE, $event = new GetBookResponseEvent($object, $request));
 
         return $event->getResponse();
     }
 
-    protected function onCreateSuccess($object, $request)
+    protected function onCreateSuccess($object, Request $request)
     {
         $this->dispatch(BookEvents::CREATE_SUCCESS, $event = new GetBookResponseEvent($object, $request));
 
@@ -65,7 +67,7 @@ class CreateController extends AbstractCreateController
         return $response;
     }
 
-    protected function onCreateCompleted($object, $request, $response)
+    protected function onCreateCompleted($object, Request $request, Response $response)
     {
         $this->dispatch(BookEvents::CREATE_COMPLETED, new FilterBookResponseEvent($object, $request, $response));
     }

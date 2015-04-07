@@ -56,7 +56,7 @@ doctrine:
                         prefix: Xidea\Bundle\BookBundle\Tests\Fixtures\Model
                         is_bundle: false
         resolve_target_entities:
-            Xidea\Component\Book\Model\BookAuthorInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\BookAuthor
+            Xidea\Component\Book\Model\AuthorInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author
             Xidea\Component\Book\Model\PublisherInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Publisher
             Xidea\Component\Book\Model\BookInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book
             
@@ -92,7 +92,7 @@ xidea_book:
         template:
             configuration: xidea_book.book.template.configuration.default
     author:
-        class: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\BookAuthor
+        class: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author
         configuration: xidea_book.author.configuration.default
         factory: xidea_book.author.factory.default
         manager: xidea_book.author.manager.default

@@ -1,4 +1,0 @@
-Xidea\Bundle\BookBundle\Tests\Fixtures\Model\BookAuthor:
-    type: entity
-    table: book_author
-    repositoryClass: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookAuthorRepository
