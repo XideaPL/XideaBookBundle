@@ -26,7 +26,7 @@ class BookTypeTest extends TypeTestCase
         $formData = array(
             'slug' => 'book1-slug',
             'isbn' => '9788375747478',
-            'title' => 'Book 1',
+            'name' => 'Book 1',
             'description' => 'Book 1 description',
             'shortDescription' => 'Book 1 short description',
             'series' => 'Book 1 Series',

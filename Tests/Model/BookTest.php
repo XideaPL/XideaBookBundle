@@ -32,8 +32,8 @@ class BookTest extends \PHPUnit_Framework_TestCase
         $book = $this->createBook();
         $this->assertNull($book->getSlug());
         
-        $book->setSlug('book-title-johndoe');
-        $this->assertEquals('book-title-johndoe', $book->getSlug());
+        $book->setSlug('book-name-johndoe');
+        $this->assertEquals('book-name-johndoe', $book->getSlug());
     }
     
     public function testEan()
@@ -63,15 +63,15 @@ class BookTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Category 1', $book->getCategory());
     }
     
-    public function testTitle()
+    public function testName()
     {
         $book = $this->createBook();
-        $this->assertNull($book->getTitle());
+        $this->assertNull($book->getName());
         
-        $title = 'Book 1';
+        $name = 'Book 1';
         
-        $book->setTitle($title);
-        $this->assertEquals($title, $book->getTitle());
+        $book->setName($name);
+        $this->assertEquals($name, $book->getName());
     }
     
     public function testDescription()

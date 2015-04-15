@@ -79,7 +79,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
         $book1->setSlug('book1-slug');
         $book1->setIsbn('9788375747478');
         $book1->setEan('9788375747478');
-        $book1->setTitle('Book 1');
+        $book1->setName('Book 1');
         $book1->setDescription('Book 1 description');
         $book1->setShortDescription('Book 1 short description');
         $book1->setSeries('Book 1 Series');
@@ -99,7 +99,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
         $book2->setSlug('book2-slug');
         $book2->setIsbn('9788375747478');
         $book2->setEan('9788375747478');
-        $book2->setTitle('Book 2');
+        $book2->setName('Book 2');
         $book2->setDescription('Book 2 description');
         $book2->setShortDescription('Book 2 short description');
         $book2->setSeries('Book 2 Series');

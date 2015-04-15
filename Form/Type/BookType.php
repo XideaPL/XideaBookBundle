@@ -42,7 +42,7 @@ class BookType extends AbstractType
             ->add('isbn', null, array(
                 'label' => 'book.isbn'
             ))
-            ->add('title', null, array(
+            ->add('name', null, array(
                 'label' => 'book.name'
             ))
             ->add('description', null, array(

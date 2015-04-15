@@ -22,7 +22,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{ 'book.title'|trans }}</th>
+                                    <th>{{ 'book.name'|trans }}</th>
                                     <th>{{ 'book.created_at'|trans }}</th>
                                     <th>{{ 'book.updated_at'|trans }}</th>
                                 </tr>
@@ -31,7 +31,7 @@
                                 {% for object in objects %}
                                     <tr>
                                         <td>{{ object.id }}</td>
-                                        <td>{{ object.title }}</td>
+                                        <td>{{ object.name }}</td>
                                         <td>{{ object.createdAt|date() }}</td>
                                         <td>{{ object.updatedAt|date() }}</td>
                                     </tr>

@@ -1,5 +1,5 @@
 book:
-    title: Tytuł
+    name: Nazwa
     description: Opis
     created_at: Dodano
     updated_at: Zmodyfikowano
