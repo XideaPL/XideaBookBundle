@@ -35,40 +35,40 @@ class CreateController extends AbstractCreateController
      */
     protected $bookManager;
 
-    public function __construct(ConfigurationInterface $configuration, BookDirectorInterface $bookDirector, BookManagerInterface $objectManager, FormHandlerInterface $formHandler)
+    public function __construct(ConfigurationInterface $configuration, BookDirectorInterface $bookDirector, BookManagerInterface $modelManager, FormHandlerInterface $formHandler)
     {
-        parent::__construct($configuration, $objectManager, $formHandler);
+        parent::__construct($configuration, $modelManager, $formHandler);
 
         $this->bookDirector = $bookDirector;
     }
 
-    protected function createObject()
+    protected function createModel()
     {
         return $this->bookDirector->build();
     }
 
-    protected function onPreCreate($object, Request $request)
+    protected function onPreCreate($model, Request $request)
     {
-        $this->dispatch(BookEvents::PRE_CREATE, $event = new GetBookResponseEvent($object, $request));
+        $this->dispatch(BookEvents::PRE_CREATE, $event = new GetBookResponseEvent($model, $request));
 
         return $event->getResponse();
     }
 
-    protected function onCreateSuccess($object, Request $request)
+    protected function onCreateSuccess($model, Request $request)
     {
-        $this->dispatch(BookEvents::CREATE_SUCCESS, $event = new GetBookResponseEvent($object, $request));
+        $this->dispatch(BookEvents::CREATE_SUCCESS, $event = new GetBookResponseEvent($model, $request));
 
         if (null === $response = $event->getResponse()) {
             $response = $this->redirectToRoute('xidea_book_show', array(
-                'id' => $object->getId()
+                'id' => $model->getId()
             ));
         }
 
         return $response;
     }
 
-    protected function onCreateCompleted($object, Request $request, Response $response)
+    protected function onCreateCompleted($model, Request $request, Response $response)
     {
-        $this->dispatch(BookEvents::CREATE_COMPLETED, new FilterBookResponseEvent($object, $request, $response));
+        $this->dispatch(BookEvents::CREATE_COMPLETED, new FilterBookResponseEvent($model, $request, $response));
     }
 }

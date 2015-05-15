@@ -13,7 +13,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Doctrine\ORM\EntityManager;
 
-use Xidea\Component\Base\Doctrine\ORM\ObjectManagerInterface;
+use Xidea\Component\Base\Doctrine\ORM\ManagerInterface;
 
 use Xidea\Component\Book\Manager\AuthorManagerInterface,
     Xidea\Component\Book\Model\AuthorInterface;
@@ -21,7 +21,7 @@ use Xidea\Component\Book\Manager\AuthorManagerInterface,
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class AuthorManager implements ObjectManagerInterface, AuthorManagerInterface
+class AuthorManager implements ManagerInterface, AuthorManagerInterface
 {
     /*
      * @var bool

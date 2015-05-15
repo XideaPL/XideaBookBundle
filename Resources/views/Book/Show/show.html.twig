@@ -2,7 +2,7 @@
 {% block xidea_book_header_title %}
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">{{ 'book_view.title'|trans({'%book_title%':object.title}) }}</h1>
+            <h1 class="page-header">{{ 'book_view.title'|trans({'%book_title%':model.name}) }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -23,25 +23,25 @@
                             <th scope="row">
                               <code>{{ 'book.name'|trans }}</code>
                             </th>
-                            <td>{{ object.name }}</td>
+                            <td>{{ model.name }}</td>
                           </tr>
                           <tr>
                             <th scope="row">
                               <code>{{ 'book.description'|trans }}</code>
                             </th>
-                            <td>{{ object.description }}</td>
+                            <td>{{ model.description }}</td>
                           </tr>
                           <tr>
                             <th scope="row">
                               <code>{{ 'book.created_at'|trans }}</code>
                             </th>
-                            <td>{{ object.createdAt|date }}</td>
+                            <td>{{ model.createdAt|date }}</td>
                           </tr>
                           <tr>
                             <th scope="row">
                               <code>{{ 'book.updated_at'|trans }}</code>
                             </th>
-                            <td>{{ object.updatedAt|date }}</td>
+                            <td>{{ model.updatedAt|date }}</td>
                           </tr>
                           <tr>
                             <th scope="row">
@@ -49,7 +49,7 @@
                             </th>
                             <td>
                                 <ul>
-                                    {% for author in object.authors %}
+                                    {% for author in model.authors %}
                                         <li>{{ author.name }}</li>
                                     {% endfor %}
                                 </ul>

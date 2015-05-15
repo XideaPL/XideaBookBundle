@@ -17,7 +17,7 @@ class ShowControllerTest extends ControllerTestCase
     {
         //$client = $this->logIn();
         $client = $this->createClient();
-        $book = $client->getContainer()->get('xidea_book.book.loader')->loadOneBy(array('title'=>'Book 1'));
+        $book = $client->getContainer()->get('xidea_book.book.loader')->loadOneBy(array('name'=>'Book 1'));
 
         
         $crawler = $client->request('GET', $client->getContainer()->get('router')->generate('xidea_book_show', array('id'=>$book->getId())));

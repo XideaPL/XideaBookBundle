@@ -34,7 +34,7 @@ class ShowController extends AbstractShowController
         $this->bookLoader = $bookLoader;
     }
 
-    protected function loadObject($id)
+    protected function loadModel($id)
     {
         $book = $this->bookLoader->load($id);
 
@@ -45,7 +45,7 @@ class ShowController extends AbstractShowController
         return $book;
     }
 
-    protected function onPreShow($object, Request $request)
+    protected function onPreShow($model, Request $request)
     {
         return;
     }
