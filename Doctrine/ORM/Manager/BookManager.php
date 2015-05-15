@@ -13,7 +13,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Doctrine\ORM\EntityManager;
 
-use Xidea\Component\Base\Doctrine\ORM\ManagerInterface;
+use Xidea\Bundle\BaseBundle\Doctrine\ORM\Manager\ModelManagerInterface;
 
 use Xidea\Component\Book\Manager\BookManagerInterface,
     Xidea\Component\Book\Model\BookInterface;
@@ -24,7 +24,7 @@ use Xidea\Bundle\BookBundle\BookEvents,
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookManager implements ManagerInterface, BookManagerInterface
+class BookManager implements ModelManagerInterface, BookManagerInterface
 {
     /*
      * @var bool

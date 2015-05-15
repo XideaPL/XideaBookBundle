@@ -13,7 +13,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Doctrine\ORM\EntityManager;
 
-use Xidea\Component\Base\Doctrine\ORM\ManagerInterface;
+use Xidea\Bundle\BaseBundle\Doctrine\ORM\Manager\ModelManagerInterface;
 
 use Xidea\Component\Book\Manager\PublisherManagerInterface,
     Xidea\Component\Book\Model\PublisherInterface;
@@ -21,7 +21,7 @@ use Xidea\Component\Book\Manager\PublisherManagerInterface,
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class PublisherManager implements ManagerInterface, PublisherManagerInterface
+class PublisherManager implements ModelManagerInterface, PublisherManagerInterface
 {
     /*
      * @var bool
