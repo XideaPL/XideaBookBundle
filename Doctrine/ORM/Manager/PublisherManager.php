@@ -13,7 +13,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 use Doctrine\ORM\EntityManager;
 
-use Xidea\Bundle\BaseBundle\Doctrine\ORM\Manager\ModelManagerInterface;
+use Xidea\Component\Base\Doctrine\ORM\Manager\ModelManagerInterface;
 
 use Xidea\Component\Book\Manager\PublisherManagerInterface,
     Xidea\Component\Book\Model\PublisherInterface;
