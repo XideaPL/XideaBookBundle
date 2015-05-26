@@ -15,6 +15,6 @@ book_list:
     title: Książki
       
 book_view:
-    title: %book_title%
+    title: %name%
     details:
         title: Szczegóły produktu
