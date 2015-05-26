@@ -37,7 +37,8 @@ class BookType extends AbstractType
     {
         $builder
             ->add('slug', null, array(
-                'label' => 'book.slug'
+                'label' => 'book.slug',
+                'required' => false
             ))
             ->add('isbn', null, array(
                 'label' => 'book.isbn'
@@ -46,37 +47,47 @@ class BookType extends AbstractType
                 'label' => 'book.name'
             ))
             ->add('description', null, array(
-                'label' => 'book.description'
+                'label' => 'book.description',
+                'required' => false
             ))
             ->add('shortDescription', null, array(
-                'label' => 'book.shortDescription'
+                'label' => 'book.short_description',
+                'required' => false
             ))
             ->add('series', null, array(
-                'label' => 'book.series'
+                'label' => 'book.series',
+                'required' => false
             ))
             ->add('cover', null, array(
-                'label' => 'book.cover'
+                'label' => 'book.cover',
+                'required' => false
             ))
             ->add('premiere', null, array(
-                'label' => 'book.premiere'
+                'label' => 'book.premiere',
+                'required' => false
             ))
             ->add('releaseYear', null, array(
-                'label' => 'book.releaseYear'
+                'label' => 'book.release_year',
+                'required' => false
             ))
             ->add('releaseNumber', null, array(
-                'label' => 'book.releaseNumber'
+                'label' => 'book.release_number',
+                'required' => false
             ))
             ->add('pages', null, array(
                 'label' => 'book.pages'
             ))
             ->add('dimensions', null, array(
-                'label' => 'book.dimensions'
+                'label' => 'book.dimensions',
+                'required' => false
             ))
             ->add('price', null, array(
-                'label' => 'book.price'
+                'label' => 'book.price',
+                'required' => false
             ))
             ->add('imagePath', null, array(
-                'label' => 'book.imagePath'
+                'label' => 'book.image_path',
+                'required' => false
             ))
         ;
     }

@@ -1,10 +1,20 @@
 book:
     name: Nazwa
+    isbn: ISBN
     description: Opis
+    short_description: Krótki opis
+    series: Seria
+    cover: Okładka
+    premiere: Premiera
+    release_year: Rok wydania
+    release_number: Numer wydania
+    pages: Ilość stron
+    dimensions: Wymiary
+    price: Cena
+    image_path: Obraz
     created_at: Dodano
     updated_at: Zmodyfikowano
-    author:
-        name: Autor
+    author: Autor
     
 book_create:
     title: Nowa książka
