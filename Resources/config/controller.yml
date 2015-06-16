@@ -11,7 +11,7 @@ services:
             - @xidea_book.book.loader
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
-            - [setTemplating, [@templating]]
+            - [setTemplateManager, [@xidea_base.template_manager]]
     xidea_book.controller.show:
         class: %xidea_book.controller.show.class%
         arguments:
@@ -19,15 +19,15 @@ services:
             - @xidea_book.book.loader
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
-            - [setTemplating, [@templating]]
+            - [setTemplateManager, [@xidea_base.template_manager]]
     xidea_book.controller.create:
         class: %xidea_book.controller.create.class%
         arguments:
             - @xidea_book.book.configuration
             - @xidea_book.book.director
             - @xidea_book.book.manager
-            - @xidea_book.book.form.create.handler
+            - @xidea_book.book.form.handler
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
             - [setRouter, [@router]]
-            - [setTemplating, [@templating]]
+            - [setTemplateManager, [@xidea_base.template_manager]]

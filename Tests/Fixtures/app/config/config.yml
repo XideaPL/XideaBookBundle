@@ -74,8 +74,8 @@ xidea_user:
                 handler: xidea_user.user.form.create.handler.default
                 type: xidea_user
                 name: user_create
-        template:
-            configuration: xidea_user.user.template.configuration.default
+    template:
+        configuration: xidea_user.template.configuration.default
             
 xidea_book:
     book:
@@ -85,13 +85,11 @@ xidea_book:
         manager: xidea_book.book.manager.default
         loader: xidea_book.book.loader.default
         form:
-            create:
-                factory: xidea_book.book.form.create.factory.default
-                handler: xidea_book.book.form.create.handler.default
+            book:
+                factory: xidea_book.book.form.factory.default
+                handler: xidea_book.book.form.handler.default
                 type: xidea_book
-                name: book_create
-        template:
-            configuration: xidea_book.book.template.configuration.default
+                name: book
     author:
         class: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author
         configuration: xidea_book.author.configuration.default
@@ -99,13 +97,11 @@ xidea_book:
         manager: xidea_book.author.manager.default
         loader: xidea_book.author.loader.default
         form:
-            create:
-                factory: xidea_book.author.form.create.factory.default
-                handler: xidea_book.author.form.create.handler.default
+            author:
+                factory: xidea_book.author.form.factory.default
+                handler: xidea_book.author.form.handler.default
                 type: xidea_book_author
-                name: author_create
-        template:
-            configuration: xidea_book.author.template.configuration.default
+                name: author
     publisher:
         class: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Publisher
         configuration: xidea_book.publisher.configuration.default
@@ -113,10 +109,10 @@ xidea_book:
         manager: xidea_book.publisher.manager.default
         loader: xidea_book.publisher.loader.default
         form:
-            create:
-                factory: xidea_book.publisher.form.create.factory.default
-                handler: xidea_book.publisher.form.create.handler.default
+            publisher:
+                factory: xidea_book.publisher.form.factory.default
+                handler: xidea_book.publisher.form.handler.default
                 type: xidea_book_publisher
-                name: publisher_create
-        template:
-            configuration: xidea_book.publisher.template.configuration.default
+                name: publisher
+    template:
+            configuration: xidea_book.template.configuration.default

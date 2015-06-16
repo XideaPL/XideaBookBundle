@@ -1,0 +1,66 @@
+parameters:
+    xidea_book.book.form.type.class: Xidea\Bundle\BookBundle\Form\Type\BookType
+    xidea_book.book.form.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
+    xidea_book.book.form.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\BookFormHandler
+    xidea_book.author.form.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorType
+    xidea_book.author.form.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
+    xidea_book.author.form.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\AuthorFormHandler
+    xidea_book.publisher.form.type.class: Xidea\Bundle\BookBundle\Form\Type\PublisherType
+    xidea_book.publisher.form.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
+    xidea_book.publisher.form.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\PublisherFormHandler
+
+services:
+    xidea_book.book.form.type:
+        class: %xidea_book.book.form.type.class%
+        arguments:
+            - %xidea_book.book.class%
+        tags:
+            - { name: form.type, alias: "xidea_book" }
+    xidea_book.book.form.factory.default:
+        class: %xidea_book.book.form.factory.default.class%
+        arguments:
+            - @form.factory
+            - %xidea_book.book.form.name%
+            - %xidea_book.book.form.type%
+            - %xidea_book.book.form.validation_groups%
+    xidea_book.book.form.handler.default:
+        class: %xidea_book.book.form.handler.default.class%
+        arguments:
+            - @xidea_book.book.form.factory
+            - @event_dispatcher
+    xidea_book.author.form.type:
+        class: %xidea_book.author.form.type.class%
+        arguments:
+            - %xidea_book.author.class%
+        tags:
+            - { name: form.type, alias: "xidea_author" }
+    xidea_book.author.form.factory.default:
+        class: %xidea_book.author.form.factory.default.class%
+        arguments:
+            - @form.factory
+            - %xidea_book.author.form.name%
+            - %xidea_book.author.form.type%
+            - %xidea_book.author.form.validation_groups%
+    xidea_book.author.form.handler.default:
+        class: %xidea_book.author.form.handler.default.class%
+        arguments:
+            - @xidea_book.author.form.factory
+            - @event_dispatcher
+    xidea_book.publisher.form.type:
+        class: %xidea_book.publisher.form.type.class%
+        arguments:
+            - %xidea_book.publisher.class%
+        tags:
+            - { name: form.type, alias: "xidea_publisher" }
+    xidea_book.publisher.form.factory.default:
+        class: %xidea_book.publisher.form.factory.default.class%
+        arguments:
+            - @form.factory
+            - %xidea_book.publisher.form.name%
+            - %xidea_book.publisher.form.type%
+            - %xidea_book.publisher.form.validation_groups%
+    xidea_book.publisher.form.handler.default:
+        class: %xidea_book.publisher.form.handler.default.class%
+        arguments:
+            - @xidea_book.publisher.form.factory
+            - @event_dispatcher

@@ -3,19 +3,15 @@ parameters:
     xidea_book.book.factory.default.class: Xidea\Component\Book\Factory\BookFactory
     xidea_book.book.builder.default.class: Xidea\Component\Book\Builder\BookBuilder
     xidea_book.book.director.default.class: Xidea\Component\Book\Builder\BookDirector
-    xidea_book.book.template.configuration.default.class: Xidea\Bundle\BaseBundle\TemplateConfiguration
   
 services:
     xidea_book.book.configuration.default:
         class: %xidea_book.book.configuration.default.class%
         arguments:
-            - @xidea_book.book.template.configuration
-    xidea_book.book.template.configuration.default:
-        class: %xidea_book.book.template.configuration.default.class%
-        arguments:
-            - %xidea_book.book.template.namespace%
-            - %xidea_book.book.template.templates%
-            - %xidea_book.book.template.engine%
+            - %xidea_book.book.code%
+            - @xidea_book.template.configuration
+        tags:
+            - { name: xidea_base.configuration }
     xidea_book.book.factory.default:
         class: %xidea_book.book.factory.default.class%
         arguments:

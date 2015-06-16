@@ -1,19 +1,15 @@
 parameters:
     xidea_book.author.configuration.default.class: Xidea\Bundle\BaseBundle\Configuration
     xidea_book.author.factory.default.class: Xidea\Component\Book\Factory\AuthorFactory
-    xidea_book.author.template.configuration.default.class: Xidea\Bundle\BaseBundle\TemplateConfiguration
   
 services:
     xidea_book.author.configuration.default:
         class: %xidea_book.author.configuration.default.class%
         arguments:
-            - @xidea_book.author.template.configuration
-    xidea_book.author.template.configuration.default:
-        class: %xidea_book.author.template.configuration.default.class%
-        arguments:
-            - %xidea_book.author.template.namespace%
-            - %xidea_book.author.template.templates%
-            - %xidea_book.author.template.engine%
+            - %xidea_book.author.code%
+            - @xidea_book.template.configuration
+        tags:
+            - { name: xidea_base.configuration }
     xidea_book.author.factory.default:
         class: %xidea_book.author.factory.default.class%
         arguments:

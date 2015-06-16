@@ -32,6 +32,7 @@ class ShowController extends AbstractShowController
         parent::__construct($configuration);
 
         $this->bookLoader = $bookLoader;
+        $this->showTemplate = 'book_show';
     }
 
     protected function loadModel($id)

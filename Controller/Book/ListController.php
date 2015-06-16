@@ -29,6 +29,7 @@ class ListController extends AbstractListController
         parent::__construct($configuration);
         
         $this->bookLoader = $bookLoader;
+        $this->listTemplate = 'book_list';
     }
     
     protected function loadModels(Request $request)

@@ -30,13 +30,14 @@ class Configuration extends AbstractConfiguration
         $this->addBookSection($rootNode);
         $this->addAuthorSection($rootNode);
         $this->addPublisherSection($rootNode);
+        $this->addTemplateSection($rootNode);
 
         return $treeBuilder;
     }
     
     public function getDefaultTemplateNamespace()
     {
-        return 'XideaBookBundle';
+        return '@XideaBook';
     }
     
     private function addBookSection(ArrayNodeDefinition $node)
@@ -46,6 +47,7 @@ class Configuration extends AbstractConfiguration
                 ->arrayNode('book')
                     ->addDefaultsIfNotSet()
                     ->children()
+                        ->scalarNode('code')->defaultValue('xidea_book')->end()
                         ->scalarNode('class')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('configuration')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('factory')->defaultValue('xidea_book.book.factory.default')->end()
@@ -57,13 +59,13 @@ class Configuration extends AbstractConfiguration
                             ->addDefaultsIfNotSet()
                             ->canBeUnset()
                             ->children()
-                                ->arrayNode('create')
+                                ->arrayNode('book')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('factory')->defaultValue('xidea_book.book.form.create.factory.default')->end()
-                                        ->scalarNode('handler')->defaultValue('xidea_book.book.form.create.handler.default')->end()
-                                        ->scalarNode('type')->defaultValue('xidea_book_create')->end()
-                                        ->scalarNode('name')->defaultValue('xidea_book_create_form')->end()
+                                        ->scalarNode('factory')->defaultValue('xidea_book.book.form.factory.default')->end()
+                                        ->scalarNode('handler')->defaultValue('xidea_book.book.form.handler.default')->end()
+                                        ->scalarNode('type')->defaultValue('xidea_book')->end()
+                                        ->scalarNode('name')->defaultValue('xidea_book_form')->end()
                                         ->arrayNode('validation_groups')
                                             ->prototype('scalar')->end()
                                             ->defaultValue(array())
@@ -72,20 +74,6 @@ class Configuration extends AbstractConfiguration
                                 ->end()
                             ->end()
                         ->end()
-                        ->append($this->addTemplateNode($this->getDefaultTemplateNamespace(), $this->getDefaultTemplateEngine(), array(
-                            'list' => array(
-                                'path' => 'Book\List:list'
-                            ),
-                            'show' => array(
-                                'path' => 'Book\Show:Show'
-                            ),
-                            'create' => array(
-                                'path' => 'Book\Create:create'
-                            ),
-                            'create_form' => array(
-                                'path' => 'Book\Create:create_form'
-                            )
-                        )))
                     ->end()
                 ->end()
             ->end();
@@ -98,6 +86,7 @@ class Configuration extends AbstractConfiguration
                 ->arrayNode('author')
                     ->addDefaultsIfNotSet()
                     ->children()
+                        ->scalarNode('code')->defaultValue('xidea_author')->end()
                         ->scalarNode('class')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('configuration')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('factory')->defaultValue('xidea_book.author.factory.default')->end()
@@ -107,13 +96,13 @@ class Configuration extends AbstractConfiguration
                             ->addDefaultsIfNotSet()
                             ->canBeUnset()
                             ->children()
-                                ->arrayNode('create')
+                                ->arrayNode('author')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('factory')->defaultValue('xidea_book.author.form.create.factory.default')->end()
-                                        ->scalarNode('handler')->defaultValue('xidea_book.author.form.create.handler.default')->end()
-                                        ->scalarNode('type')->defaultValue('xidea_author_create')->end()
-                                        ->scalarNode('name')->defaultValue('xidea_author_create_form')->end()
+                                        ->scalarNode('factory')->defaultValue('xidea_book.author.form.factory.default')->end()
+                                        ->scalarNode('handler')->defaultValue('xidea_book.author.form.handler.default')->end()
+                                        ->scalarNode('type')->defaultValue('xidea_author')->end()
+                                        ->scalarNode('name')->defaultValue('xidea_author_form')->end()
                                         ->arrayNode('validation_groups')
                                             ->prototype('scalar')->end()
                                             ->defaultValue(array())
@@ -122,7 +111,6 @@ class Configuration extends AbstractConfiguration
                                 ->end()
                             ->end()
                         ->end()
-                        ->append($this->addTemplateNode($this->getDefaultTemplateNamespace(), $this->getDefaultTemplateEngine()))
                     ->end()
                 ->end()
             ->end();
@@ -135,6 +123,7 @@ class Configuration extends AbstractConfiguration
                 ->arrayNode('publisher')
                     ->addDefaultsIfNotSet()
                     ->children()
+                        ->scalarNode('code')->defaultValue('xidea_publisher')->end()
                         ->scalarNode('class')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('configuration')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('factory')->defaultValue('xidea_book.publisher.factory.default')->end()
@@ -144,13 +133,13 @@ class Configuration extends AbstractConfiguration
                             ->addDefaultsIfNotSet()
                             ->canBeUnset()
                             ->children()
-                                ->arrayNode('create')
+                                ->arrayNode('publisher')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('factory')->defaultValue('xidea_book.publisher.form.create.factory.default')->end()
-                                        ->scalarNode('handler')->defaultValue('xidea_book.publisher.form.create.handler.default')->end()
-                                        ->scalarNode('type')->defaultValue('xidea_publisher_create')->end()
-                                        ->scalarNode('name')->defaultValue('xidea_publisher_create_form')->end()
+                                        ->scalarNode('factory')->defaultValue('xidea_book.publisher.form.factory.default')->end()
+                                        ->scalarNode('handler')->defaultValue('xidea_book.publisher.form.handler.default')->end()
+                                        ->scalarNode('type')->defaultValue('xidea_publisher')->end()
+                                        ->scalarNode('name')->defaultValue('xidea_publisher_form')->end()
                                         ->arrayNode('validation_groups')
                                             ->prototype('scalar')->end()
                                             ->defaultValue(array())
@@ -159,9 +148,16 @@ class Configuration extends AbstractConfiguration
                                 ->end()
                             ->end()
                         ->end()
-                        ->append($this->addTemplateNode($this->getDefaultTemplateNamespace(), $this->getDefaultTemplateEngine()))
                     ->end()
                 ->end()
+            ->end();
+    }
+    
+    protected function addTemplateSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->append($this->addTemplateNode($this->getDefaultTemplateNamespace(), $this->getDefaultTemplateEngine(), [], true))
             ->end();
     }
 }

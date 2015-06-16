@@ -40,6 +40,8 @@ class CreateController extends AbstractCreateController
         parent::__construct($configuration, $modelManager, $formHandler);
 
         $this->bookDirector = $bookDirector;
+        $this->createTemplate = 'book_create';
+        $this->createFormTemplate = 'book_create_form';
     }
 
     protected function createModel()
