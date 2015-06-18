@@ -3,6 +3,7 @@ parameters:
     xidea_book.book.form.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
     xidea_book.book.form.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\BookFormHandler
     xidea_book.author.form.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorType
+    xidea_book.author.form.choice.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorChoiceType
     xidea_book.author.form.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
     xidea_book.author.form.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\AuthorFormHandler
     xidea_book.publisher.form.type.class: Xidea\Bundle\BookBundle\Form\Type\PublisherType
@@ -33,7 +34,13 @@ services:
         arguments:
             - %xidea_book.author.class%
         tags:
-            - { name: form.type, alias: "xidea_author" }
+            - { name: form.type, alias: "xidea_book_author" }
+    xidea_book.author.form.choice.type:
+        class: %xidea_book.author.form.choice.type.class%
+        arguments:
+            - @xidea_book.author.loader
+        tags:
+            - { name: form.type, alias: "xidea_book_author_choice" }
     xidea_book.author.form.factory.default:
         class: %xidea_book.author.form.factory.default.class%
         arguments:
