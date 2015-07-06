@@ -32,7 +32,7 @@ class ShowControllerTest extends ControllerTestCase
         );
         $this->assertGreaterThan(
             0,
-            $crawler->filter('html:contains("Autor")')->count()
+            $crawler->filter('html:contains("Autorzy")')->count()
         );
     }
 }

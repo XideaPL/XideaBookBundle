@@ -10,19 +10,56 @@
 namespace Xidea\Bundle\BookBundle\Tests\Form\Type;
 
 use Xidea\Bundle\BookBundle\Form\Type\BookType,
+    Xidea\Bundle\BookBundle\Form\Type\AuthorChoiceType,
+    Xidea\Bundle\BookBundle\Form\Type\AuthorChoiceCollectionType,
     Xidea\Component\Book\Model\BookInterface,
-    Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book;
+    Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book,
+    Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author;
 
 use Symfony\Component\Form\Test\TypeTestCase,
     Symfony\Component\Form\Forms,
     Symfony\Component\Form\FormBuilder,
     Symfony\Component\Form\Extension\Validator\Type\FormTypeValidatorExtension,
-    Symfony\Component\Validator\ConstraintViolationList;
+    Symfony\Component\Validator\ConstraintViolationList,
+    Symfony\Component\Form\PreloadedExtension;
 
 class BookTypeTest extends TypeTestCase
 {
+    protected function getExtensions()
+    {
+        $author1 = $this->getMockBuilder(
+                    'Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author'
+                )
+                ->setMethods(['getId'])
+                ->getMock();
+        $author1->method('getId')->willReturn(1);
+        $authorLoader = $this->getMockBuilder(
+                'Xidea\Bundle\BookBundle\Doctrine\ORM\Loader\AuthorLoader'
+            )
+            ->disableOriginalConstructor()
+            ->setMethods(['load','loadAll'])
+            ->getMock();
+        $authorLoader->method('load')->will($this->returnValue($author1));
+        $authorLoader->method('loadAll')->will($this->returnValue([
+            $author1
+        ]));
+        
+        $authorChoiceType = new AuthorChoiceType($authorLoader);
+        $authorChoiceCollectionType = new AuthorChoiceCollectionType();
+        return array(new PreloadedExtension(array(
+            $authorChoiceType->getName() => $authorChoiceType,
+            $authorChoiceCollectionType->getName() => $authorChoiceCollectionType
+        ), array()));
+    }
+    
     public function testSubmitValidData()
     {
+        $author1 = $this->getMockBuilder(
+                    'Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author'
+                )
+                ->setMethods(['getId'])
+                ->getMock();
+        $author1->method('getId')->will($this->returnValue(1));
         $formData = array(
             'slug' => 'book1-slug',
             'isbn' => '9788375747478',
@@ -37,7 +74,8 @@ class BookTypeTest extends TypeTestCase
             'pages' => 376,
             'dimensions' => '220x140x30',
             'price' => 39.90,
-            'imagePath' => 'book1-image-path.jpg'
+            'imagePath' => 'book1-image-path.jpg',
+            'authors' => [1]
         );
         
         $object = new Book();

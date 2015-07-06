@@ -14,7 +14,7 @@ book:
     image_path: Obraz
     created_at: Dodano
     updated_at: Zmodyfikowano
-    author: Autor
+    authors: Autorzy
     
 book_create:
     title: Nowa książka

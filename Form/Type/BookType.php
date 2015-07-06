@@ -89,6 +89,9 @@ class BookType extends AbstractType
                 'label' => 'book.image_path',
                 'required' => false
             ))
+            ->add('authors', 'xidea_book_author_choice_collection', array(
+                'label' => 'book.authors'
+            ))
         ;
     }
 

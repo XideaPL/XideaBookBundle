@@ -1,0 +1,16 @@
+<div class="book-author-form">
+    <ul class="book-author-form-list">
+        {% for author in authors %}
+            <li>{{ form_row(author) }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<script type="text/javascript">
+    if (typeof jQuery != 'undefined' && typeof jQuery.xidea.formcollection != 'undefined') {
+        $('ul.book-author-form-list').formcollection({
+            prototype: '{{ form_widget(authors.vars.prototype) }}',
+            formTag: 'li'
+        });
+    }
+</script>
+ 

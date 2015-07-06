@@ -63,6 +63,7 @@ class AuthorChoiceType extends AbstractType
         $result = array();
         
         $authors = $this->loader->loadAll();
+
         foreach($authors as $author) {
             $result[$author->getId()] = $author->getName();
         }
