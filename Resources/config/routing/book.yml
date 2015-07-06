@@ -1,13 +1,13 @@
 xidea_book_list:
     pattern:  /
-    defaults: { _controller: xidea_book.controller.list:listAction }
+    defaults: { _controller: xidea_book.book.controller.list:listAction }
  
 xidea_book_show:
     pattern:  /book/{id}
-    defaults: { _controller: xidea_book.controller.show:showAction }
+    defaults: { _controller: xidea_book.book.controller.show:showAction }
     requirements:
         id:  \d+
     
 xidea_book_create:
     pattern:  /book/create
-    defaults: { _controller: xidea_book.controller.create:createAction }
+    defaults: { _controller: xidea_book.book.controller.create:createAction }

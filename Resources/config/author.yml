@@ -7,7 +7,6 @@ services:
         class: %xidea_book.author.configuration.default.class%
         arguments:
             - %xidea_book.author.code%
-            - @xidea_book.template.configuration
         tags:
             - { name: xidea_base.configuration }
     xidea_book.author.factory.default:

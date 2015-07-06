@@ -1,27 +1,28 @@
 parameters:
-    xidea_book.controller.list.class: Xidea\Bundle\BookBundle\Controller\Book\ListController
-    xidea_book.controller.show.class: Xidea\Bundle\BookBundle\Controller\Book\ShowController
-    xidea_book.controller.create.class: Xidea\Bundle\BookBundle\Controller\Book\CreateController
+    xidea_book.book.controller.list.class: Xidea\Bundle\BookBundle\Controller\Book\ListController
+    xidea_book.book.controller.show.class: Xidea\Bundle\BookBundle\Controller\Book\ShowController
+    xidea_book.book.controller.create.class: Xidea\Bundle\BookBundle\Controller\Book\CreateController
+    xidea_book.author.controller.list.class: Xidea\Bundle\BookBundle\Controller\Book\AuthorController
   
 services:
-    xidea_book.controller.list:
-        class: %xidea_book.controller.list.class%
+    xidea_book.book.controller.list:
+        class: %xidea_book.book.controller.list.class%
         arguments:
             - @xidea_book.book.configuration
             - @xidea_book.book.loader
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
             - [setTemplateManager, [@xidea_base.template_manager]]
-    xidea_book.controller.show:
-        class: %xidea_book.controller.show.class%
+    xidea_book.book.controller.show:
+        class: %xidea_book.book.controller.show.class%
         arguments:
             - @xidea_book.book.configuration
             - @xidea_book.book.loader
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
             - [setTemplateManager, [@xidea_base.template_manager]]
-    xidea_book.controller.create:
-        class: %xidea_book.controller.create.class%
+    xidea_book.book.controller.create:
+        class: %xidea_book.book.controller.create.class%
         arguments:
             - @xidea_book.book.configuration
             - @xidea_book.book.director
@@ -30,4 +31,12 @@ services:
         calls:
             - [setEventDispatcher, [@event_dispatcher]]
             - [setRouter, [@router]]
+            - [setTemplateManager, [@xidea_base.template_manager]]
+    xidea_book.author.controller.list:
+        class: %xidea_book.author.controller.list.class%
+        arguments:
+            - @xidea_book.author.configuration
+            - @xidea_book.author.loader
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
             - [setTemplateManager, [@xidea_base.template_manager]]

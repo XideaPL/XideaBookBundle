@@ -31,15 +31,12 @@ class XideaBookExtension extends AbstractExtension
         $loader->load('author_orm.yml');
         $loader->load('publisher.yml');
         $loader->load('publisher_orm.yml');
-        $loader->load('template.yml');
         
         $this->loadBookSection($config['book'], $container, $loader);
         $this->loadAuthorSection($config['author'], $container, $loader);
         $this->loadPublisherSection($config['publisher'], $container, $loader);
         
-        if (isset($config['template'])) {
-            $this->loadTemplateSection($this->getAlias(), $config['template'], $container, $loader);
-        }
+        $this->loadTemplateSection($config, $container, $loader);
     }
     
     private function loadBookSection(array $config, ContainerBuilder $container, Loader\YamlFileLoader $loader)
@@ -124,13 +121,12 @@ class XideaBookExtension extends AbstractExtension
     protected function getDefaultTemplates()
     {
         return [
-            'main' => ['namespace' => '', 'path' => 'main'],
-            'book_main' => ['path' => 'main'],
-            'book_list' => ['path' => 'Book/List/list'],
-            'book_show' => ['path' => 'Book/Show/show'],
-            'book_create' => ['path' => 'Book/Create/create'],
-            'book_form' => ['path' => 'Book/Form/form'],
-            'book_form_fields' => ['path' => 'Book/Form/fields']
+            'book_main' => ['path' => '@XideaBook/main'],
+            'book_list' => ['path' => '@XideaBook/Book/List/list'],
+            'book_show' => ['path' => '@XideaBook/Book/Show/show'],
+            'book_create' => ['path' => '@XideaBook/Book/Create/create'],
+            'book_form' => ['path' => '@XideaBook/Book/Form/form'],
+            'book_form_fields' => ['path' => '@XideaBook/Book/Form/fields']
         ];
     }
 }

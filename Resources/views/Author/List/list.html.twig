@@ -1,0 +1,45 @@
+{% extends xidea_template('book_main') %}
+{% block bundle_title %}
+    <h1 class="page-header">{{ 'book_author_list.title'|trans }}</h1>
+{% endblock %}
+{% block bundle_main %}
+    {% block book_author_main %}
+        <div class="box book-author-box">
+            <div class="box-header">
+                <h3 class="box-title">{{ 'book_author_list.title'|trans }}</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                {% block book_author_list %}
+                    <div class="book-author-list">
+                        <table class="table table-striped book-author-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>{{ 'book_author.name'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for model in models %}
+                                    <tr>
+                                        <td>{{ model.id }}</td>
+                                        <td>{{ model.name }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>#</th>
+                                    <th>{{ 'book_author.name'|trans }}</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.book_author-list -->
+                {% endblock %}
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    {% endblock %}
+{% endblock %}

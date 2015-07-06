@@ -9,7 +9,6 @@ services:
         class: %xidea_book.book.configuration.default.class%
         arguments:
             - %xidea_book.book.code%
-            - @xidea_book.template.configuration
         tags:
             - { name: xidea_base.configuration }
     xidea_book.book.factory.default:
