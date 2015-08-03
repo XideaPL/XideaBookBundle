@@ -85,8 +85,8 @@ class BookType extends AbstractType
                 'label' => 'book.price',
                 'required' => false
             ))
-            ->add('imagePath', null, array(
-                'label' => 'book.image_path',
+            ->add('image', null, array(
+                'label' => 'book.image',
                 'required' => false
             ))
             ->add('authors', 'xidea_book_author_choice_collection', array(

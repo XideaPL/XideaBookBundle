@@ -90,7 +90,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
         $book1->setPages(376);
         $book1->setDimensions('220x140x30');
         $book1->setPrice(39.90);
-        $book1->setImagePath('book1-image-path.jpg');
+        $book1->setImage('book1-image-path.jpg');
         $book1->setCreatedAt(new \DateTime('2012-04-01'));
         $book1->addAuthor($this->getReference('book-author-johndoe'));
         $book1->setPublisher($this->getReference('book-publisher-acme'));
@@ -110,7 +110,7 @@ class LoadBookData extends AbstractFixture implements OrderedFixtureInterface, C
         $book2->setPages(376);
         $book2->setDimensions('220x240x30');
         $book2->setPrice(39.90);
-        $book2->setImagePath('book2-image-path.jpg');
+        $book2->setImage('book2-image-path.jpg');
         $book1->setCreatedAt(new \DateTime('2015-09-16'));
         $book2->addAuthor($this->getReference('book-author-janedoe'));
         $book2->setPublisher($this->getReference('book-publisher-bigben'));

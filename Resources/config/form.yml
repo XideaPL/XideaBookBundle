@@ -4,7 +4,7 @@ parameters:
     xidea_book.book.form.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\BookFormHandler
     xidea_book.author.form.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorType
     xidea_book.author.form.choice.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorChoiceType
-    xidea_book.author.form.choice_collection.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorCHoiceCollectionType
+    xidea_book.author.form.choice_collection.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorChoiceCollectionType
     xidea_book.author.form.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
     xidea_book.author.form.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\AuthorFormHandler
     xidea_book.publisher.form.type.class: Xidea\Bundle\BookBundle\Form\Type\PublisherType
