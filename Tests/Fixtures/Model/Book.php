@@ -10,8 +10,7 @@
 namespace Xidea\Bundle\BookBundle\Tests\Fixtures\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
-use Xidea\Component\Book\Model\AbstractBook;
+use Xidea\Bundle\BookBundle\Model\AbstractBook;
 
 /**
  * @author Artur Pszczółka <artur.pszczolka@xidea.pl>
@@ -21,10 +20,5 @@ class Book extends AbstractBook
     public function __construct()
     {
         $this->authors = new ArrayCollection();
-    }
-    
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 }

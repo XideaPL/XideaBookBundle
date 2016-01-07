@@ -10,18 +10,15 @@
 namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Manager;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-
 use Doctrine\ORM\EntityManager;
-
-use Xidea\Component\Base\Doctrine\ORM\Manager\ModelManagerInterface;
-
-use Xidea\Component\Book\Manager\AuthorManagerInterface,
-    Xidea\Component\Book\Model\AuthorInterface;
+use Xidea\Base\Model\Manager\Doctrine\ORM\ManagerInterface as ModelManagerInterface;
+use Xidea\Book\Author\ManagerInterface,
+    Xidea\Book\AuthorInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class AuthorManager implements ModelManagerInterface, AuthorManagerInterface
+class AuthorManager implements ModelManagerInterface, ManagerInterface
 {
     /*
      * @var bool

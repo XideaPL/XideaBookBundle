@@ -1,4 +1,4 @@
-Xidea\Component\Book\Model\AbstractBook:
+Xidea\Bundle\BookBundle\Model\AbstractBook:
     type: mappedSuperclass
     repositoryClass: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookRepository
     id:
@@ -60,7 +60,7 @@ Xidea\Component\Book\Model\AbstractBook:
             precision: 10
             scale: 2
             nullable: true
-        image:
+        imagePath:
             type: string
             length: 512
             nullable: true
@@ -74,7 +74,7 @@ Xidea\Component\Book\Model\AbstractBook:
             nullable: true
     manyToMany:
         authors:
-            targetEntity: Xidea\Component\Book\Model\AuthorInterface
+            targetEntity: Xidea\Bundle\BookBundle\Model\AbstractAuthor
             joinTable:
                 name: book_book_author
                 joinColumns:
@@ -87,7 +87,7 @@ Xidea\Component\Book\Model\AbstractBook:
                         onDelete: CASCADE
     manyToOne:
         publisher:
-            targetEntity: Xidea\Component\Book\Model\PublisherInterface
+            targetEntity: Xidea\Bundle\BookBundle\Model\AbstractPublisher
             joinColumn:
                 name: publisher_id
                 referencedColumnName: id

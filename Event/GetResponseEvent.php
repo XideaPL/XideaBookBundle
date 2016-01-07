@@ -12,13 +12,13 @@ namespace Xidea\Bundle\BookBundle\Event;
 use Symfony\Component\HttpFoundation\Response,
     Symfony\Component\HttpFoundation\Request;
 
-use Xidea\Component\Book\Model\BookInterface;
+use Xidea\Book\BookInterface;
 
 /**
  *
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class GetBookResponseEvent extends BookEvent
+class GetResponseEvent extends BookEvent
 {
 
     private $response;

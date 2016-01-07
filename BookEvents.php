@@ -9,11 +9,11 @@
 
 namespace Xidea\Bundle\BookBundle;
 
-use Xidea\Component\Book\BookEvents as BaseBookEvents;
+use Xidea\Book\Events;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-final class BookEvents extends BaseBookEvents
+final class BookEvents extends Events
 {
 }

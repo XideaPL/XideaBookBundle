@@ -57,9 +57,9 @@ doctrine:
                         prefix: Xidea\Bundle\BookBundle\Tests\Fixtures\Model
                         is_bundle: false
         resolve_target_entities:
-            Xidea\Component\Book\Model\AuthorInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author
-            Xidea\Component\Book\Model\PublisherInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Publisher
-            Xidea\Component\Book\Model\BookInterface: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book
+            Xidea\Bundle\BookBundle\Model\AbstractAuthor: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author
+            Xidea\Bundle\BookBundle\Model\AbstractPublisher: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Publisher
+            Xidea\Bundle\BookBundle\Model\AbstractBook: Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book
             
 xidea_user:
     user:

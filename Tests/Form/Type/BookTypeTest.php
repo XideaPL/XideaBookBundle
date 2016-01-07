@@ -12,7 +12,7 @@ namespace Xidea\Bundle\BookBundle\Tests\Form\Type;
 use Xidea\Bundle\BookBundle\Form\Type\BookType,
     Xidea\Bundle\BookBundle\Form\Type\AuthorChoiceType,
     Xidea\Bundle\BookBundle\Form\Type\AuthorChoiceCollectionType,
-    Xidea\Component\Book\Model\BookInterface,
+    Xidea\Book\BookInterface,
     Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Book,
     Xidea\Bundle\BookBundle\Tests\Fixtures\Model\Author;
 

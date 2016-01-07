@@ -9,7 +9,7 @@
 
 namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Repository;
 
-use Xidea\Component\Book\Model\AuthorInterface;
+use Xidea\Book\AuthorInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
@@ -37,6 +37,11 @@ interface BookRepositoryInterface
      * @return array
      */
     function findOneBy(array $criteria, array $orderBy = array());
+    
+    /**
+     * @return object
+     */
+    function findQb();
     
     /**
      * Returns a query builder.

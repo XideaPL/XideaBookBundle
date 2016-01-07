@@ -1,8 +1,18 @@
 parameters:
-    xidea_book.author.configuration.default.class: Xidea\Bundle\BaseBundle\Configuration
-    xidea_book.author.factory.default.class: Xidea\Component\Book\Factory\AuthorFactory
+    #services
+    xidea_book.author.configuration.default.class: Xidea\Base\Configuration\DefaultConfiguration
+    xidea_book.author.factory.default.class: Xidea\Base\Model\Factory\DefaultFactory
+    #controllers
+    xidea_book.author.controller.list.class: Xidea\Bundle\BookBundle\Controller\Author\ListController
+    #forms
+    xidea_book.author.form.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorType
+    xidea_book.author.form.choice.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorChoiceType
+    xidea_book.author.form.choice_collection.type.class: Xidea\Bundle\BookBundle\Form\Type\AuthorChoiceCollectionType
+    xidea_book.author.form.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
+    xidea_book.author.form.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\AuthorFormHandler
   
 services:
+    #services
     xidea_book.author.configuration.default:
         class: %xidea_book.author.configuration.default.class%
         arguments:
@@ -13,3 +23,41 @@ services:
         class: %xidea_book.author.factory.default.class%
         arguments:
             - %xidea_book.author.class%
+    #controllers
+    xidea_book.author.controller.list:
+        class: %xidea_book.author.controller.list.class%
+        arguments:
+            - @xidea_book.author.configuration
+            - @xidea_book.author.loader
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
+            - [setTemplateManager, [@xidea_base.template_manager]]
+    #forms
+    xidea_book.author.form.type:
+        class: %xidea_book.author.form.type.class%
+        arguments:
+            - %xidea_book.author.class%
+        tags:
+            - { name: form.type, alias: "xidea_book_author" }
+    xidea_book.author.form.choice.type:
+        class: %xidea_book.author.form.choice.type.class%
+        arguments:
+            - @xidea_book.author.loader
+        tags:
+            - { name: form.type, alias: "xidea_book_author_choice" }
+    xidea_book.author.form.choice_collection.type:
+        class: %xidea_book.author.form.choice_collection.type.class%
+        tags:
+            - { name: form.type, alias: "xidea_book_author_choice_collection" }
+    xidea_book.author.form.factory.default:
+        class: %xidea_book.author.form.factory.default.class%
+        arguments:
+            - @form.factory
+            - %xidea_book.author.form.name%
+            - %xidea_book.author.form.type%
+            - %xidea_book.author.form.validation_groups%
+    xidea_book.author.form.handler.default:
+        class: %xidea_book.author.form.handler.default.class%
+        arguments:
+            - @xidea_book.author.form.factory
+            - @event_dispatcher

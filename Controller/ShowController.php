@@ -7,23 +7,25 @@
  * file that was distributed with this source code.
  */
 
-namespace Xidea\Bundle\BookBundle\Controller\Author;
+namespace Xidea\Bundle\BookBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Xidea\Book\Author\LoaderInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Xidea\Book\LoaderInterface;
 use Xidea\Base\ConfigurationInterface,
     Xidea\Bundle\BaseBundle\Controller\AbstractController;
+use Xidea\Book\BookInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class ListController extends AbstractController
+class ShowController extends AbstractController
 {
     /*
      * @var LoaderInterface
      */
     protected $loader;
-
+    
     /**
      * 
      * @param ConfigurationInterface $configuration
@@ -32,33 +34,38 @@ class ListController extends AbstractController
     public function __construct(ConfigurationInterface $configuration, LoaderInterface $loader)
     {
         parent::__construct($configuration);
-        
+
         $this->loader = $loader;
     }
     
     /**
      * 
+     * @param int $id
      * @param Request $request
      * @return Response
      */
-    public function listAction(Request $request)
+    public function showAction($id, Request $request)
     {
-        $models = $this->loadModels($request);
+        $model = $this->loadModel($id);
         
-        return $this->render('book_author_list', array(
-            'models' => $models
+        return $this->render('book_show', array(
+            'model' => $model
         ));
     }
-    
+
     /**
-     * @param Request $request
-     * @return array
+     * @param int $id
+     * 
+     * @return BookInterface|null
      */
-    protected function loadModels(Request $request)
+    protected function loadModel($id)
     {
-        return $this->loader->loadByPage(
-            $request->query->get($this->configuration->getPaginationParameterName(), 1),
-            $this->configuration->getPaginationLimit()
-        );
+        $book = $this->loader->load($id);
+
+        if (!$book instanceof BookInterface) {
+            throw new NotFoundHttpException('book.not_found');
+        }
+
+        return $book;
     }
 }

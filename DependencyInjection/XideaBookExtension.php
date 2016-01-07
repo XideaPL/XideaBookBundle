@@ -24,8 +24,6 @@ class XideaBookExtension extends AbstractExtension
         list($config, $loader) = $this->setUp($configs, new Configuration($this->getAlias()), $container);
 
         $loader->load('book.yml');
-        $loader->load('controller.yml');
-        $loader->load('form.yml');
         $loader->load('book_orm.yml');
         $loader->load('author.yml');
         $loader->load('author_orm.yml');

@@ -11,13 +11,13 @@ namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Loader;
 
 use Doctrine\ORM\EntityManager;
 
-use Xidea\Component\Book\Loader\PublisherLoaderInterface;
+use Xidea\Book\Publisher\LoaderInterface;
 use Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\PublisherRepositoryInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class PublisherLoader implements PublisherLoaderInterface
+class PublisherLoader implements LoaderInterface
 {
     /*
      * @var PublisherRepositoryInterface

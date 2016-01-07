@@ -7,10 +7,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Xidea\Bundle\BookBundle\Controller\Author;
+namespace Xidea\Bundle\BookBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Xidea\Book\Author\LoaderInterface;
+use Xidea\Book\LoaderInterface;
 use Xidea\Base\ConfigurationInterface,
     Xidea\Bundle\BaseBundle\Controller\AbstractController;
 
@@ -45,7 +45,7 @@ class ListController extends AbstractController
     {
         $models = $this->loadModels($request);
         
-        return $this->render('book_author_list', array(
+        return $this->render('book_list', array(
             'models' => $models
         ));
     }

@@ -7,13 +7,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Xidea\Bundle\BookBundle\Tests\Fixtures\Model;
+namespace Xidea\Bundle\BookBundle\Model;
 
-use Xidea\Bundle\BookBundle\Model\AbstractPublisher;
+use Xidea\Book\AbstractBook as BaseAbstractBook;
 
 /**
- * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class Publisher extends AbstractPublisher
+abstract class AbstractBook extends BaseAbstractBook
 {
 }

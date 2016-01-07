@@ -9,30 +9,43 @@
 
 namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Loader;
 
-use Doctrine\ORM\EntityManager;
-
-use Xidea\Component\Book\Loader\AuthorLoaderInterface;
+use Xidea\Book\Author\LoaderInterface;
 use Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\AuthorRepositoryInterface;
+use Xidea\Base\ConfigurationInterface,
+    Xidea\Base\Pagination\PaginatorInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class AuthorLoader implements AuthorLoaderInterface
+class AuthorLoader implements LoaderInterface
 {
     /*
      * @var AuthorRepositoryInterface
      */
     protected $repository;
     
-    /**
-     * Constructs a comment repository.
-     *
-     * @param string $class The class
-     * @param EntityManager The entity manager
+    /*
+     * @var ConfigurationInterface
      */
-    public function __construct(AuthorRepositoryInterface $repository)
+    protected $configuration;
+    
+    /*
+     * @var PaginatorInterface
+     */
+    protected $paginator;
+    
+    /**
+     * Constructs a loader.
+     *
+     * @param BookRepositoryInterface $repository The repository
+     * @param ConfigurationInterface $configuration The configuration
+     * @param PaginatorInterface $paginator The paginator
+     */
+    public function __construct(AuthorRepositoryInterface $repository, ConfigurationInterface $configuration, PaginatorInterface $paginator)
     {
         $this->repository = $repository;
+        $this->configuration = $configuration;
+        $this->paginator = $paginator;
     }
 
     /**
@@ -73,5 +86,15 @@ class AuthorLoader implements AuthorLoaderInterface
     public function loadByName($name)
     {
         return $this->repository->findByName($name);
+    }
+    
+    /*
+     * @return PaginationInterface
+     */
+    public function loadByPage($page = 1, $limit = 25)
+    {
+        $qb = $this->repository->findQb();
+        
+        return $this->paginator->paginate($qb, $page, $limit);
     }
 }

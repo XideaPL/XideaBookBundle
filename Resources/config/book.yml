@@ -1,10 +1,20 @@
 parameters:
-    xidea_book.book.configuration.default.class: Xidea\Bundle\BaseBundle\Configuration
-    xidea_book.book.factory.default.class: Xidea\Component\Book\Factory\BookFactory
-    xidea_book.book.builder.default.class: Xidea\Component\Book\Builder\BookBuilder
-    xidea_book.book.director.default.class: Xidea\Component\Book\Builder\BookDirector
+    #services
+    xidea_book.book.configuration.default.class: Xidea\Base\Configuration\DefaultConfiguration
+    xidea_book.book.factory.default.class: Xidea\Base\Model\Factory\DefaultFactory
+    xidea_book.book.builder.default.class: Xidea\Book\Builder\DefaultBuilder
+    xidea_book.book.director.default.class: Xidea\Book\Builder\DefaultDirector
+    #controllers
+    xidea_book.book.controller.list.class: Xidea\Bundle\BookBundle\Controller\ListController
+    xidea_book.book.controller.show.class: Xidea\Bundle\BookBundle\Controller\ShowController
+    xidea_book.book.controller.create.class: Xidea\Bundle\BookBundle\Controller\CreateController
+    #forms
+    xidea_book.book.form.type.class: Xidea\Bundle\BookBundle\Form\Type\BookType
+    xidea_book.book.form.factory.default.class: Xidea\Bundle\BaseBundle\Form\Factory\FormFactory
+    xidea_book.book.form.handler.default.class: Xidea\Bundle\BookBundle\Form\Handler\BookFormHandler
   
 services:
+    #services
     xidea_book.book.configuration.default:
         class: %xidea_book.book.configuration.default.class%
         arguments:
@@ -23,3 +33,50 @@ services:
         class: %xidea_book.book.director.default.class%
         arguments:
             - @xidea_book.book.builder
+    #controllers
+    xidea_book.book.controller.list:
+        class: %xidea_book.book.controller.list.class%
+        arguments:
+            - @xidea_book.book.configuration
+            - @xidea_book.book.loader
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
+            - [setTemplateManager, [@xidea_base.template_manager]]
+    xidea_book.book.controller.show:
+        class: %xidea_book.book.controller.show.class%
+        arguments:
+            - @xidea_book.book.configuration
+            - @xidea_book.book.loader
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
+            - [setTemplateManager, [@xidea_base.template_manager]]
+    xidea_book.book.controller.create:
+        class: %xidea_book.book.controller.create.class%
+        arguments:
+            - @xidea_book.book.configuration
+            - @xidea_book.book.director
+            - @xidea_book.book.manager
+            - @xidea_book.book.form.handler
+        calls:
+            - [setEventDispatcher, [@event_dispatcher]]
+            - [setRouter, [@router]]
+            - [setTemplateManager, [@xidea_base.template_manager]]
+    #forms
+    xidea_book.book.form.type:
+        class: %xidea_book.book.form.type.class%
+        arguments:
+            - %xidea_book.book.class%
+        tags:
+            - { name: form.type, alias: "xidea_book" }
+    xidea_book.book.form.factory.default:
+        class: %xidea_book.book.form.factory.default.class%
+        arguments:
+            - @form.factory
+            - %xidea_book.book.form.name%
+            - %xidea_book.book.form.type%
+            - %xidea_book.book.form.validation_groups%
+    xidea_book.book.form.handler.default:
+        class: %xidea_book.book.form.handler.default.class%
+        arguments:
+            - @xidea_book.book.form.factory
+            - @event_dispatcher

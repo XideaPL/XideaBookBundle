@@ -13,7 +13,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Xidea\Bundle\BaseBundle\Form\DataTransformer\ModelToIdTransformer;
-use Xidea\Component\Book\Loader\AuthorLoaderInterface;
+use Xidea\Book\Author\LoaderInterface;
 
 /**
  * Description of RegistrationType
@@ -23,14 +23,14 @@ use Xidea\Component\Book\Loader\AuthorLoaderInterface;
 class AuthorChoiceType extends AbstractType
 {
     /*
-     * var AuthorLoaderInterface
+     * var LoaderInterface
      */
     protected $loader;
 
     /**
-     * @param AuthorLoaderInterface $loader The Author loader
+     * @param LoaderInterface $loader The Author loader
      */
-    public function __construct(AuthorLoaderInterface $loader)
+    public function __construct(LoaderInterface $loader)
     {
         $this->loader = $loader;
     }

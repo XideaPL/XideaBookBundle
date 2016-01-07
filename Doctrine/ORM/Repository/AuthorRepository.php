@@ -19,6 +19,16 @@ class AuthorRepository extends EntityRepository implements AuthorRepositoryInter
     /**
      * {@inheritdoc}
      */
+    public function findQb()
+    {
+        $qb = $this->createQueryBuilder('a');
+        
+        return $qb;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
     public function findByName($name)
     {
         $qb = $this->createQueryBuilder('a');

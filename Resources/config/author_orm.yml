@@ -14,6 +14,8 @@ services:
         class: %xidea_book.author.loader.default.class%
         arguments:
             - @xidea_book.author.repository.default
+            - @xidea_book.author.configuration
+            - @xidea_base.paginator
     xidea_book.author.manager.default:
         class: %xidea_book.author.manager.default.class%
         arguments:

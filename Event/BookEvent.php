@@ -12,7 +12,7 @@ namespace Xidea\Bundle\BookBundle\Event;
 use Symfony\Component\EventDispatcher\Event,
     Symfony\Component\HttpFoundation\Request;
 
-use Xidea\Component\Book\Model\BookInterface;
+use Xidea\Book\BookInterface;
 
 /**
  *

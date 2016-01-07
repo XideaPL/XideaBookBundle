@@ -9,30 +9,43 @@
 
 namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Loader;
 
-use Doctrine\ORM\EntityManager;
-
-use Xidea\Component\Book\Loader\BookLoaderInterface,
+use Xidea\Book\LoaderInterface,
     Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\BookRepositoryInterface;
+use Xidea\Base\ConfigurationInterface,
+    Xidea\Base\Pagination\PaginatorInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
-class BookLoader implements BookLoaderInterface
+class BookLoader implements LoaderInterface
 {
     /*
      * @var BookRepositoryInterface
      */
     protected $repository;
     
-    /**
-     * Constructs a comment repository.
-     *
-     * @param string $class The class
-     * @param EntityManager The entity manager
+    /*
+     * @var ConfigurationInterface
      */
-    public function __construct(BookRepositoryInterface $repository)
+    protected $configuration;
+    
+    /*
+     * @var PaginatorInterface
+     */
+    protected $paginator;
+    
+    /**
+     * Constructs a loader.
+     *
+     * @param BookRepositoryInterface $repository The repository
+     * @param ConfigurationInterface $configuration The configuration
+     * @param PaginatorInterface $paginator The paginator
+     */
+    public function __construct(BookRepositoryInterface $repository, ConfigurationInterface $configuration, PaginatorInterface $paginator)
     {
         $this->repository = $repository;
+        $this->configuration = $configuration;
+        $this->paginator = $paginator;
     }
 
     /**
@@ -65,5 +78,15 @@ class BookLoader implements BookLoaderInterface
     public function loadOneBy(array $criteria, array $orderBy = array())
     {
         return $this->repository->findOneBy($criteria, $orderBy);
+    }
+    
+    /*
+     * @return PaginationInterface
+     */
+    public function loadByPage($page = 1, $limit = 25)
+    {
+        $qb = $this->repository->findQb();
+        
+        return $this->paginator->paginate($qb, $page, $limit);
     }
 }

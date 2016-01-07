@@ -11,7 +11,7 @@ book:
     pages: Ilość stron
     dimensions: Wymiary
     price: Cena
-    image: Obraz
+    image_path: Obraz
     created_at: Dodano
     updated_at: Zmodyfikowano
     authors: Autorzy

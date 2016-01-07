@@ -36,6 +36,11 @@ interface AuthorRepositoryInterface
      */
     function findOneBy(array $criteria, array $orderBy = array());
     
+    /**
+     * @return object
+     */
+    function findQb();
+    
     /*
      * @param string|array $name
      * 

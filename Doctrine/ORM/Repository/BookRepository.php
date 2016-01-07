@@ -11,13 +11,23 @@ namespace Xidea\Bundle\BookBundle\Doctrine\ORM\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-use Xidea\Component\Book\Model\AuthorInterface;
+use Xidea\Book\AuthorInterface;
 
 /**
  * @author Artur Pszczółka <a.pszczolka@xidea.pl>
  */
 class BookRepository extends EntityRepository implements BookRepositoryInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function findQb()
+    {
+        $qb = $this->createQueryBuilder('b');
+        
+        return $qb;
+    }
+    
     /**
      * {@inheritdoc}
      */

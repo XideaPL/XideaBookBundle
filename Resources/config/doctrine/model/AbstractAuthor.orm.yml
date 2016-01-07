@@ -1,4 +1,4 @@
-Xidea\Component\Book\Model\AbstractAuthor:
+Xidea\Bundle\BookBundle\Model\AbstractAuthor:
     type: mappedSuperclass
     repositoryClass: Xidea\Bundle\BookBundle\Doctrine\ORM\Repository\AuthorRepository
     id:
